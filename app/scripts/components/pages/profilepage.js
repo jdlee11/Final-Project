@@ -24,7 +24,7 @@ let ProfilePage = React.createClass({
       data: {
         query: JSON.stringify({
           _acl: {
-            creator: session.get('userId')
+            creator: this.props.params.id
           }
         })
       }, success: (response, queryResponse) => {
