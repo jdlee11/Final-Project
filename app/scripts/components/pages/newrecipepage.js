@@ -13,12 +13,22 @@ let NewRecipePage = React.createClass({
       steps: []
     };
   },
+  removeArrayItem: function(array, item){
+    let newArray = array;
+    let index = newArray.indexOf(item);
+    newArray.splice(index, 1);
+    return newArray;
+  },
   addKeywordFunction: function(evt){
     evt.preventDefault();
     if (this.refs.addKeyword.value !== ''){
       this.setState({keywords: this.state.keywords.concat(this.refs.addKeyword.value)});
       this.refs.addKeyword.value = '';
     }
+  },
+  removeKeyword: function(evt){
+    let newKeywords = this.removeArrayItem(this.state.keywords, evt.target.innerText);
+    this.setState({keywords: newKeywords});
   },
   addIngredientFunction: function(evt){
     evt.preventDefault();
@@ -27,12 +37,20 @@ let NewRecipePage = React.createClass({
       this.refs.addIngredient.value = '';
     }
   },
+  removeIngredient: function(evt){
+    let newIngredients = this.removeArrayItem(this.state.ingredients, evt.target.innerText);
+    this.setState({ingredients: newIngredients});
+  },
   addStepFunction: function(evt){
     evt.preventDefault();
     if (this.refs.addStep.value !== ''){
       this.setState({steps: this.state.steps.concat(this.refs.addStep.value)});
       this.refs.addStep.value = '';
     }
+  },
+  removeStep: function(evt){
+    let newSteps = this.removeArrayItem(this.state.steps, evt.target.innerText);
+    this.setState({steps: newSteps});
   },
   createFunction: function(evt){
     evt.preventDefault();
@@ -57,14 +75,15 @@ let NewRecipePage = React.createClass({
     });
   },
   render: function(){
+    let self = this;
     let keywordList = this.state.keywords.map(function(word, i){
-      return (<div className="form-keyword" key={i}>{word}</div>);
+      return (<div className="form-keyword" key={i} onClick={self.removeKeyword}>{word}</div>);
     });
     let ingredientsList = this.state.ingredients.map(function(item, i){
-      return (<div className="form-ingredient" key={i}>{item}</div>);
+      return (<div className="form-ingredient" key={i} onClick={self.removeIngredient}>{item}</div>);
     });
     let stepsList = this.state.steps.map(function(step, i){
-      return (<div className="form-steps" key={i}>{step}</div>);
+      return (<div className="form-steps" key={i} onClick={self.removeStep}>{step}</div>);
     });
     return (
       <div>

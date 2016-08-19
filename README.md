@@ -74,6 +74,7 @@ This website will allow users to share recipes with others by uploading new reci
   - add camera by arejoenah
   - add to list by Nikolay Necheuhin
   - Heart by Alexander Bickov
+  - Delete by Huu Nguyen
 
 
 
