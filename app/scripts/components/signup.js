@@ -22,12 +22,15 @@ let Signup = React.createClass({
     return (
       <div className="signup-container">
         <Header />
-        <form onSubmit={this.signupFunction}>
-          <input type="text" placeholder="username" ref="username"/>
-          <input type="password" placeholder="password" ref="password"/>
-          <input type="password" placeholder="confirm" ref="confirm"/>
-          <input type="submit" value="Submit"/>
-        </form>
+        <div className="signup-div">
+          <h2>Sign up</h2>
+          <form onSubmit={this.signupFunction}>
+            <input type="text" placeholder="username" ref="username"/>
+            <input type="password" placeholder="password" ref="password"/>
+            <input type="password" placeholder="confirm" ref="confirm"/>
+            <input type="submit" value="Submit"/>
+          </form>
+        </div>
       </div>
     );
   }

@@ -51,7 +51,6 @@ let AllRecipesPage = React.createClass({
       <div>
         <Header />
         <div className="all-recipes">
-          <p>Look at all these recipes</p>
           {recipeList}
         </div>
       </div>

@@ -33,6 +33,16 @@ const Session = Backbone.Model.extend({
             }
           })
         }
+        store.users.fetch({
+          data: {
+            query: JSON.stringify({
+              _id: this.get('userId')
+            })
+          }, success: (response, queryResponse) => {
+            store.thisUser = queryResponse[0];
+            console.log(store.thisUser);
+          }
+        });
         hashHistory.push("recipes");
       },
       error: function(){

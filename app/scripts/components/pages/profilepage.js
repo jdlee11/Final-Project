@@ -45,14 +45,14 @@ let ProfilePage = React.createClass({
       }
       userDetails = (
         <div className="profile-page">
-          <p>{this.state.user.username}</p>
+          <h1>{this.state.user.username}</h1>
           <h3>Recipes</h3>
           {recipeList}
         </div>
       );
     }
     return (
-      <div>
+      <div className="profile-container">
         {userDetails}
       </div>
     );

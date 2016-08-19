@@ -3,6 +3,7 @@ import Header from '../header';
 import session from '../../models/session';
 import Recipe from '../../models/Recipe';
 import recipeCollection from '../../collections/recipes';
+import { hashHistory } from 'react-router';
 
 let NewRecipePage = React.createClass({
   getInitialState: function(){
@@ -35,19 +36,23 @@ let NewRecipePage = React.createClass({
   },
   createFunction: function(evt){
     evt.preventDefault();
+    let time = this.refs.preptime.value + " mins";
+    if (this.refs.preptime.value === 1){
+      time.replace('s', '');
+    }
     let newRecipe = new Recipe({
       username: session.get('username'),
       userid: session.get('userId'),
       title: this.refs.title.value,
       keywords: this.state.keywords,
       description: this.refs.description.value,
+      time: time,
       ingredients: this.state.ingredients,
       steps: this.state.steps
     });
     recipeCollection.create(newRecipe, {
       success: function(response){
-        console.log(session.get('userId'));
-        // session.get('userId') is the id of the currently logged in user
+        hashHistory.push('recipes');
       }
     });
   },
@@ -66,22 +71,35 @@ let NewRecipePage = React.createClass({
         <Header />
         <div className="new-recipe-page">
           <input type="text" placeholder="Recipe Name" ref="title" required/>
+
           {keywordList}
           <form onSubmit={this.addKeywordFunction}>
             <input type="submit" value="+"/>
             <input type="text" placeholder="+ Add Keyword" ref="addKeyword"/>
           </form>
+
           <textarea placeholder="Description of your recipe" ref="description"></textarea>
-          {ingredientsList}
+
+          <input type="number" placeholder="Prep time" ref="preptime" required />
+
+          <div className="form-ingredient-list">
+            <h3>Ingredients</h3>
+            {ingredientsList}
+          </div>
           <form onSubmit={this.addIngredientFunction}>
             <input type="submit" value="+"/>
             <input type="text" placeholder="+ Add Ingredient" ref="addIngredient"/>
           </form>
-          {stepsList}
+
+          <div className="form-step-list">
+            <h3>Instructions</h3>
+            {stepsList}
+          </div>
           <form onSubmit={this.addStepFunction}>
             <input type="submit" value="+"/>
             <input type="text" onSubmit={this.addStepFunction} placeholder="+ Add Step" ref="addStep"/>
           </form>
+
           <input type="button" onClick={this.createFunction} value="Create Recipe!"/>
         </div>
       </div>

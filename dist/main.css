@@ -1,3 +1,90 @@
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%; }
 
+.header {
+  height: 100px;
+  background: #ff7d00;
+  position: relative; }
+  .header .logo {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 45px;
+    top: 5px; }
+  .header h1 {
+    margin: 0;
+    position: absolute;
+    left: 15px;
+    font-size: 40px;
+    top: 45px;
+    color: white; }
+  .header a {
+    text-align: center;
+    float: right;
+    text-decoration: none;
+    color: white;
+    font-family: helvetica;
+    font-size: 15px; }
+    .header a .header-icon {
+      width: 50px;
+      height: 50px;
+      margin: 15px 10px 4px 10px; }
+      .header a .header-icon:hover {
+        width: 58px;
+        height: 58px;
+        margin: 11px 6px 0px 6px; }
+    .header a p {
+      margin: 0; }
+
+.all-recipes {
+  text-align: center; }
+
+.recipe-home {
+  display: inline-block;
+  width: 200px;
+  height: auto;
+  vertical-align: top;
+  border: 1px solid #ff7d00;
+  border-radius: 7px;
+  margin: 5px;
+  padding: 5px;
+  text-align: left;
+  font-family: helvetica; }
+  .recipe-home a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: black; }
+  .recipe-home p {
+    display: inline-block; }
+  .recipe-home .home-description {
+    display: block; }
+
+.login-div, .signup-div {
+  width: 300px;
+  height: 200px;
+  border: 1px solid #ff7d00;
+  border-radius: 7px;
+  margin: 0 auto;
+  margin-top: 20px;
+  text-align: center; }
+  .login-div h2, .signup-div h2 {
+    font-family: helvetica;
+    font-size: 30px;
+    margin-bottom: 10px; }
+  .login-div input[type=text], .login-div input[type=password], .signup-div input[type=text], .signup-div input[type=password] {
+    height: 20px;
+    font-size: 14px;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 8px; }
+  .login-div input[type=submit], .signup-div input[type=submit] {
+    width: 100px;
+    font-size: 30px; }
+
+.signup-div {
+  height: 230px; }
 
 /*# sourceMappingURL=main.css.map */

@@ -29,7 +29,6 @@ This website will allow users to share recipes with others by uploading new reci
 - when creating a new recipe, should be able to mark an ingredient as optional. Will be reflected when a user views list of ingredients
 - allow user to upload photo for the recipe when creating new one
 - when adding favorite, user can write comment and upload their own photo
-<<<<<<< HEAD
 
 
 
@@ -58,3 +57,32 @@ This website will allow users to share recipes with others by uploading new reci
 - A question to ask on 8/17: Would it make sense to use the backbone method "where" to get an array of models matching a specified attribute, for example, all the recipes with a creator id matching the user's id?
 
 - Got recipes to work, they show up on a user's profile. The solution, suggested by Jess, was to fetch recipes using a query that checks if `_acl.creator` matches the profile page's `this.props.params.id` meaning the recipe was created by the user whose profile you are viewing. Although my project still lacks styling whatsoever, it works as a functional site. I will add styling, and of course, a lot more functionality! Confidence is back up a little after fixing last night's block
+
+
+
+
+
+
+#### Giving credit where credit is due
+- Icons downloaded from thenounproject.com
+  - pot by Francielly Costantin Senra
+  - Sign Up by Charlene Chen
+  - Login by Bluetip Design
+  - Log Out by Bluetip Design
+  - Home by David
+  - User by To Uyen
+  - add camera by arejoenah
+  - add to list by Nikolay Necheuhin
+  - Heart by Alexander Bickov
+
+
+
+
+
+
+
+
+
+
+
+*******************************************************

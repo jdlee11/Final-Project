@@ -8,13 +8,15 @@ let Recipe = Backbone.Model.extend({
     this.title = data.title;
     this.keywords = data.keywords || [];
     this.description = data.description || '';
+    this.time = data.time;
     this.ingredients = data.ingredients;
     this.steps = data.steps;
   },
   idAttribute: '_id',
   urlRoot: `https://baas.kinvey.com/appdata/${settings.appId}/recipes`,
   defaults: {
-    favorited: 0
+    liked: 0,
+    tried: 0
   }
 });
 

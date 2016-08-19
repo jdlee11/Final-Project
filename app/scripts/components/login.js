@@ -14,11 +14,14 @@ let Login = React.createClass({
     return (
       <div className="login-container">
         <Header />
-        <form onSubmit={this.loginFunction}>
-          <input type="text" placeholder="username" ref="username"/>
-          <input type="password" placeholder="password" ref="password"/>
-          <input type="submit" value="Submit"/>
-        </form>
+        <div className="login-div">
+          <h2>Log in</h2>
+          <form onSubmit={this.loginFunction}>
+            <input type="text" placeholder="username" ref="username"/>
+            <input type="password" placeholder="password" ref="password"/>
+            <input type="submit" value="Submit"/>
+          </form>
+        </div>
       </div>
     );
   }

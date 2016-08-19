@@ -1,10 +1,11 @@
 import React from 'react';
 import session from '../../models/session';
-import { Link } from 'react-router';
+import { Link, hashHistory } from 'react-router';
 
 let LogOutPage = React.createClass({
   render: function(){
     session.clear();
+    hashHistory.push('recipes');
     return (
       <div className="logout-page">
         <p>Logged out!</p>

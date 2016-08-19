@@ -9,6 +9,7 @@ let User = Backbone.Model.extend({
   urlRoot: `https://baas.kinvey.com/user/${settings.appId}`,
   defaults: {
     favorites: [],
+    saved: [],  
     recipes: [],
     bio: ''
   }
