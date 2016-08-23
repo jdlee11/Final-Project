@@ -43,7 +43,7 @@ body {
 
 .recipe-home {
   display: inline-block;
-  width: 200px;
+  width: 250px;
   height: auto;
   vertical-align: top;
   border: 1px solid #ff7d00;
@@ -51,7 +51,11 @@ body {
   margin: 5px;
   padding: 5px;
   text-align: left;
-  font-family: helvetica; }
+  font-family: helvetica;
+  overflow: hidden; }
+  .recipe-home .photo {
+    width: 250px;
+    height: 200px; }
   .recipe-home a {
     text-decoration: none;
     font-size: 20px;
@@ -61,6 +65,16 @@ body {
     display: inline-block; }
   .recipe-home .home-description {
     display: block; }
+
+.recipe-button-container img {
+  margin-left: 10px;
+  vertical-align: middle; }
+.recipe-button-container .bookmark-tag {
+  height: 40px;
+  width: 28px; }
+.recipe-button-container .like-tag {
+  width: 28px;
+  height: 28px; }
 
 .login-div, .signup-div {
   width: 300px;
@@ -93,5 +107,26 @@ body {
 .deleteButton {
   height: 15px;
   width: 15px; }
+
+.timer {
+  height: 20px;
+  width: 20px; }
+
+.dropzone {
+  width: 200px;
+  height: 170px;
+  background: #fff;
+  border: 3px dashed #bbb;
+  margin: 0 auto;
+  margin-top: 15px;
+  text-align: center;
+  display: inline-block; }
+  .dropzone img {
+    width: 80px;
+    height: 80px;
+    margin-top: 45px; }
+
+.new-details {
+  display: inline-block; }
 
 /*# sourceMappingURL=main.css.map */

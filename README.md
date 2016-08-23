@@ -58,9 +58,10 @@ This website will allow users to share recipes with others by uploading new reci
 
 - Got recipes to work, they show up on a user's profile. The solution, suggested by Jess, was to fetch recipes using a query that checks if `_acl.creator` matches the profile page's `this.props.params.id` meaning the recipe was created by the user whose profile you are viewing. Although my project still lacks styling whatsoever, it works as a functional site. I will add styling, and of course, a lot more functionality! Confidence is back up a little after fixing last night's block
 
+- I am working on allowing the user to upload an image when creating a new recipe. I am using the Kinvey File API, and it is mostly working. I will have to use GET requests to test it, but I am successfully POSTing.
 
-
-
+- As of 8/21, my block is uploading images to Google Cloud using Kinvey's File API.
+- Today, I will tackle the "like" and "bookmark" functionality. A user will not be able to unlike, but WILL be able to un-bookmark. Bookmarked recipes will be shown on a user's profile, liked ones will not.
 
 
 #### Giving credit where credit is due
@@ -75,6 +76,9 @@ This website will allow users to share recipes with others by uploading new reci
   - add to list by Nikolay Necheuhin
   - Heart by Alexander Bickov
   - Delete by Huu Nguyen
+  - bookmark by Julynn B.
+  - Kitchen Timer by joe pictos
+  - Place Setting by Creative Stall
 
 
 

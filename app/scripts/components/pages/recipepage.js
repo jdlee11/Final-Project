@@ -6,7 +6,9 @@ import { Link } from 'react-router';
 let RecipePage = React.createClass({
   getInitialState: function(){
     return {
-      recipe: null
+      recipe: null,
+      canLike: false,
+      canSave: false
     };
   },
   componentDidMount: function(){
@@ -30,14 +32,27 @@ let RecipePage = React.createClass({
       recipeDetails = (
         <div className="recipe-page">
           <h1>{this.state.recipe.title}</h1>
-          <p className="author">by <Link to={`profiles/${this.state.recipe.userid}`}>{this.state.recipe.username}</Link></p>
+          <p className="author">by <Link to={`profiles/${this.state.recipe.userid}/recipes`}>{this.state.recipe.username}</Link></p>
           {keywordList}
-          <ul className="ingredients">
-            {ingredientsList}
-          </ul>
-          <ul className="steps">
-            {stepsList}
-          </ul>
+          <p className="description-box">
+            {this.state.recipe.description}
+          </p>
+          <p>
+            <img  className="timer" src="assets/timerIcon.png" />
+            {this.state.recipe.time}
+          </p>
+          <div className="ingredient-box">
+            <h2>Ingredients</h2>
+            <ul className="ingredients">
+              {ingredientsList}
+            </ul>
+          </div>
+          <div className="steps-box">
+            <h2>Steps</h2>
+            <ul className="steps">
+              {stepsList}
+            </ul>
+          </div>
         </div>
       );
     }

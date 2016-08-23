@@ -4,13 +4,17 @@ import session from '../../models/session';
 import Recipe from '../../models/Recipe';
 import recipeCollection from '../../collections/recipes';
 import { hashHistory } from 'react-router';
+import Dropzone from 'react-dropzone';
+import $ from 'jquery';
+import settings from '../../settings';
 
 let NewRecipePage = React.createClass({
   getInitialState: function(){
     return {
       keywords: [],
       ingredients: [],
-      steps: []
+      steps: [],
+      imageId: ""
     };
   },
   removeArrayItem: function(array, item){
@@ -18,6 +22,35 @@ let NewRecipePage = React.createClass({
     let index = newArray.indexOf(item);
     newArray.splice(index, 1);
     return newArray;
+  },
+  addImageFunction: function(files){
+    if (files[0].type.substr(0, 5) === "image"){
+      console.log(files[0]);
+      // $.ajax({
+      //   type: 'POST',
+      //   data: {
+      //     _public: true,
+      //     size: files[0].size
+      //   },
+      //   url: `https://baas.kinvey.com/blob/${settings.appId}`,
+      //   success: (response) => {
+      //     console.log('success!');
+      //     console.log(response);
+      //     $.ajax({
+      //       type: 'PUT',
+      //       url: response._uploadURL,
+      //       headers: {
+      //         ...response._requiredHeaders,
+      //         'Content-Length': response.size
+      //       },
+      //       success: (response) => {
+      //         console.log('successfully loaded to google cloud');
+      //         console.log(response);
+      //       }
+      //     })
+      //   }
+      // });
+    }
   },
   addKeywordFunction: function(evt){
     evt.preventDefault();
@@ -66,10 +99,13 @@ let NewRecipePage = React.createClass({
       description: this.refs.description.value,
       time: time,
       ingredients: this.state.ingredients,
-      steps: this.state.steps
+      steps: this.state.steps,
+      liked: 0,
+      tried: 0
     });
     recipeCollection.create(newRecipe, {
       success: function(response){
+        console.log(response);
         hashHistory.push('recipes');
       }
     });
@@ -89,18 +125,24 @@ let NewRecipePage = React.createClass({
       <div>
         <Header />
         <div className="new-recipe-page">
-          <input type="text" placeholder="Recipe Name" ref="title" required/>
+          <Dropzone className="dropzone" onDrop={this.addImageFunction}>
+            <img src="assets/noun_585221_cc.png" />
+          </Dropzone>
 
-          {keywordList}
-          <form onSubmit={this.addKeywordFunction}>
-            <input type="submit" value="+"/>
-            <input type="text" placeholder="+ Add Keyword" ref="addKeyword"/>
-          </form>
+          <div className="new-details">
+            <input type="text" placeholder="Recipe Name" ref="title" required/>
 
-          <textarea placeholder="Description of your recipe" ref="description"></textarea>
+            {keywordList}
+            <form onSubmit={this.addKeywordFunction}>
+              <input type="submit" value="+"/>
+              <input type="text" placeholder="+ Add Keyword" ref="addKeyword"/>
+            </form>
 
-          <input type="number" placeholder="Prep time" ref="preptime" required />
+            <textarea placeholder="Description of your recipe" ref="description"></textarea>
 
+            <img className="timer" src="assets/timerIcon.png" />
+            <input type="number" placeholder="Prep time" ref="preptime" required />
+          </div>
           <div className="form-ingredient-list">
             <h3>Ingredients</h3>
             {ingredientsList}

@@ -39,11 +39,15 @@
     "presets": [
       "es2015",
       "react"
+    ],
+    "plugins": [
+      "transform-object-rest-spread"
     ]
   },
   "author": "nicerhugs",
   "license": "MIT",
   "devDependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.8.0",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.11.1",
     "babel-register": "^6.11.5",

@@ -6,7 +6,7 @@ import session from '../models/session';
 let Header = React.createClass({
   render: function(){
     let headerContents;
-    if (session.get('authtoken') && session.get('userId') !== '57b38016bcd8c7723b8f72c7'){
+    if (session.get('authtoken') && session.get('userId') !== '57ba04bbdd2e952342b96364'){
       headerContents = (
         <div className="header">
           <Link to="recipes">
@@ -17,7 +17,7 @@ let Header = React.createClass({
             <img className="header-icon" src="assets/noun_344460_cc.png" />
             <p>Log Out</p>
           </Link>
-          <Link to={`profiles/${session.get('userId')}`}>
+          <Link to={`profiles/${session.get('userId')}/recipes`}>
             <img className="header-icon" src="assets/noun_305942_cc.png" />
             <p>Profile</p>
           </Link>
