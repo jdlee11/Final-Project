@@ -38,6 +38,11 @@ body {
     .header a p {
       margin: 0; }
 
+.whole-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh; }
+
 .all-recipes {
   text-align: center; }
 
@@ -55,14 +60,25 @@ body {
   overflow: hidden; }
   .recipe-home .photo {
     width: 250px;
-    height: 200px; }
+    height: auto; }
   .recipe-home a {
     text-decoration: none;
     font-size: 20px;
     font-weight: bold;
-    color: black; }
+    color: black;
+    display: block;
+    margin-left: 10px; }
   .recipe-home p {
-    display: inline-block; }
+    display: inline-block;
+    margin-left: 10px; }
+    .recipe-home p .like-icon {
+      height: 20px;
+      width: 20px;
+      margin-right: 5px; }
+    .recipe-home p .tried-icon {
+      height: 25px;
+      width: 25px;
+      margin-right: 5px; }
   .recipe-home .home-description {
     display: block; }
 
@@ -128,5 +144,24 @@ body {
 
 .new-details {
   display: inline-block; }
+
+.author .edit-button {
+  height: 30px;
+  width: 30px; }
+
+.modal-wrap {
+  background: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px; }
+
+.confirm-modal {
+  height: 150px;
+  width: 300px;
+  background: #ff7d00;
+  margin: 0 auto;
+  margin-top: 100px; }
 
 /*# sourceMappingURL=main.css.map */

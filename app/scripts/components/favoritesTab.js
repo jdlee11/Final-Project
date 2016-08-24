@@ -27,11 +27,9 @@ let FavoritesTab = React.createClass({
   render: function(){
     let bookmarkList;
     if (this.state.bookmarks){
-      console.log(this.state.bookmarks);
       bookmarkList = this.state.bookmarks.map(function(item, i){
         let recipe = recipeCollection.get(item.recipeId);
-        console.log(recipe);
-        return (<RecipeHome recipe={recipe} key={i}/>);
+        return (<RecipeHome recipe={recipe.toJSON()} key={i}/>);
       });
     }
     return (

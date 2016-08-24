@@ -63,6 +63,9 @@ This website will allow users to share recipes with others by uploading new reci
 - As of 8/21, my block is uploading images to Google Cloud using Kinvey's File API.
 - Today, I will tackle the "like" and "bookmark" functionality. A user will not be able to unlike, but WILL be able to un-bookmark. Bookmarked recipes will be shown on a user's profile, liked ones will not.
 
+- like and bookmark functionality is in place and should be working. I had issues with overwriting the collection and not being able to remove models, but that has been resolved. I am now working on adding an "edit" functionality to recipe pages of which the current user is the creator. This involves an edit button, which toggles a state property "editing" to true. When this is true, most content will be re-rendered as input, with values already set, but able to be edited. The user will be able to toggle "editing" back to false either through a "cancel" button or by "saving changes", which updates the data on the recipe model before toggling and thus, re-rendering without inputs.
+
+- instead of changing the contents of the page, I will use a similar set up as the "new recipe page", but it will save instead of create, and will use an existing recipe.
 
 #### Giving credit where credit is due
 - Icons downloaded from thenounproject.com
@@ -79,8 +82,11 @@ This website will allow users to share recipes with others by uploading new reci
   - bookmark by Julynn B.
   - Kitchen Timer by joe pictos
   - Place Setting by Creative Stall
+  - Pencil by vijay sekhar
+  - Serving Dish by misirlou
 
-
+- Other
+  - Shannon Riester for help with File Reader
 
 
 

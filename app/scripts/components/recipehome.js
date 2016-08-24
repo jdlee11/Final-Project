@@ -3,48 +3,55 @@ import { Link } from 'react-router';
 import likeCollection from '../collections/likes';
 import bookmarkCollection from '../collections/bookmarks';
 import session from '../models/session';
+import recipeCollection from '../collections/recipes';
 
 let RecipeHome = React.createClass({
   getInitialState: function(){
     return {
       liked: [],
-      bookmarked: []
+      bookmarked: [],
+      recipe: null
     };
   },
   componentDidMount: function(){
-    // check if this recipe is already liked by the user
-    likeCollection.fetch({
-      data: {
-        query: JSON.stringify({
-          userId: session.get('userId'),
-        })
-      }, success: (response, queryResponse) => {
-        let self = this;
-        if (queryResponse.length > 0){
-          this.setState({liked: queryResponse.filter(function(item){
-              return item.recipeId === self.props.recipe._id;
-            })
-          });
-        }
-      }
-    });
+    // recipeCollection.fetch({
+    //   success: () => {
+    //     this.setState({recipe: recipeCollection.get(this.props.recipe._id)});
+        // check if this recipe is already liked by the user
+        likeCollection.fetch({
+          data: {
+            query: JSON.stringify({
+              userId: session.get('userId'),
+            })
+          }, success: (response, queryResponse) => {
+            let self = this;
+            if (queryResponse.length > 0){
+              this.setState({liked: queryResponse.filter(function(item){
+                  return item.recipeId === self.props.recipe._id;
+                })
+              });
+            }
+          }
+        });
 
-    // check if this recipe is bookmarked by the user
-    bookmarkCollection.fetch({
-      data: {
-        query: JSON.stringify({
-          userId: session.get('userId'),
-        })
-      }, success: (response, queryResponse) => {
-        let self = this;
-        if (queryResponse.length > 0){
-          this.setState({bookmarked: queryResponse.filter(function(item){
-              return item.recipeId === self.props.recipe._id;
-            })
-          });
-        }
-      }
-    });
+        // check if this recipe is bookmarked by the user
+        bookmarkCollection.fetch({
+          data: {
+            query: JSON.stringify({
+              userId: session.get('userId'),
+            })
+          }, success: (response, queryResponse) => {
+            let self = this;
+            if (queryResponse.length > 0){
+              this.setState({bookmarked: queryResponse.filter(function(item){
+                  return item.recipeId === self.props.recipe._id;
+                })
+              });
+            }
+          }
+        });
+    //   }
+    // });
   },
   toggleLike: function(){
     if (this.state.liked.length > 0){
@@ -52,6 +59,10 @@ let RecipeHome = React.createClass({
       toRemove.destroy({
         success: () => {
           this.setState({liked: []});
+          let recipe = recipeCollection
+          // this.state.recipe.save({
+          //   liked: this.state.recipe.get('liked') - 1
+          // });
         }
       });
     } else {
@@ -61,6 +72,9 @@ let RecipeHome = React.createClass({
       }, {
         success: (response) => {
           this.setState({liked: [response]});
+          // this.state.recipe.save({
+          //   liked: this.state.recipe.get('liked') + 1
+          // });
         }
       });
     }
@@ -85,10 +99,12 @@ let RecipeHome = React.createClass({
     }
   },
   render: function(){
-    // let image;
-    // if (this.props.image){
-    //
-    // }
+    let imageSrc;
+    if (this.props.recipe.image){
+      imageSrc = this.props.recipe.image;
+    } else {
+      imageSrc = "assets/noun_111712_cc.png";
+    }
     let likeTag;
     let bookmarkTag;
     let likeTagSrc;
@@ -113,13 +129,19 @@ let RecipeHome = React.createClass({
     }
     return (
       <div className="recipe-home">
-        <img className="photo" src="assets/noun_111712_cc.png" />
+        <img className="photo" src={imageSrc} />
         <div className="recipe-button-container">
           {likeTag}
           {bookmarkTag}
         </div>
-        <p>{`Likes: ${this.props.recipe.liked}`}</p>
-        <p>{`Made: ${this.props.recipe.tried}`}</p>
+        <p>
+          <img className="like-icon" src="assets/likes_icon.png"/>
+          {this.props.recipe.liked}
+        </p>
+        <p>
+          <img className="tried-icon" src="assets/noun_7565_cc.png"/>
+          {this.props.recipe.tried}
+        </p>
         <Link to={`recipes/${this.props.recipe._id}`}>{this.props.recipe.title}</Link>
         <p className="home-description">{this.props.recipe.description}</p>
       </div>

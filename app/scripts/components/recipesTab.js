@@ -25,7 +25,6 @@ let RecipesTab = React.createClass({
     let recipeList;
     if (this.state.recipes){
       recipeList = this.state.recipes.map(function(item, i){
-        console.log(item);
         return (<RecipeHome recipe={item} key={i}/>);
       });
     }
