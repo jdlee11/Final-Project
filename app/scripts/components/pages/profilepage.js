@@ -19,15 +19,26 @@ let ProfilePage = React.createClass({
     });
   },
   render: function(){
+    let tabLinkClass;
+    let secondTabLinkClass;
+    if (this.props.routes[2].path === "recipes"){
+      tabLinkClass = "selected-profile-tab";
+      secondTabLinkClass = "profile-tab";
+    } else {
+      tabLinkClass = "profile-tab";
+      secondTabLinkClass = "selected-profile-tab";
+    }
     let userDetails;
     if (this.state.user){
       userDetails = (
-        <div className="profile-page">
+         <div className="profile-page">
           <h1>{this.state.user.username}</h1>
-          <Link className="profile-tab"
-            to={`profiles/${this.props.params.id}/recipes`}>Recipes</Link>
-          <Link className="profile-tab"
-            to={`profiles/${this.props.params.id}/bookmarks`}>Bookmarks</Link>
+          <div className="profile-tab-list">
+            <Link className={tabLinkClass}
+              to={`profiles/${this.props.params.id}/recipes`}>Recipes</Link>
+            <Link className={secondTabLinkClass}
+              to={`profiles/${this.props.params.id}/bookmarks`}>Bookmarks</Link>
+          </div>
           {this.props.children}
         </div>
       );

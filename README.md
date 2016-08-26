@@ -67,6 +67,10 @@ This website will allow users to share recipes with others by uploading new reci
 
 - instead of changing the contents of the page, I will use a similar set up as the "new recipe page", but it will save instead of create, and will use an existing recipe.
 
+- I have created a separate "made" collection which keeps track of userIds and recipeIds. This way, I can reliably keep track of the number of times a recipe has been made. I can also modify this by adding a new "made" model whenever a user completes the step-by-step walkthrough. By doing a query for how many of these "made"s have a matching recipeId, I can get the number and show it on the RecipeHome component. Before, I had the number stored on the recipe itself, but it could not be modified by other users.
+
+- As of 8/24, I am working on the step-by-step modal, which I am calling the Cookit modal. At this very moment, it only has a list of ingredients on the first page, along with a navigation arrow. Each page, at a minimum, will have navigation arrows (useful for revisiting previous steps), a button to close the modal, and some content. The content of the first page is a list of ingredients, which the user will confirm they have by marking as complete.
+
 #### Giving credit where credit is due
 - Icons downloaded from thenounproject.com
   - pot by Francielly Costantin Senra
@@ -84,6 +88,11 @@ This website will allow users to share recipes with others by uploading new reci
   - Place Setting by Creative Stall
   - Pencil by vijay sekhar
   - Serving Dish by misirlou
+  - Arrow by Tahsin Tahil
+  - Close by Vicons Design
+  - Tick Circle by Hea Poh Lin
+  - Circle by Leinad Lehmko
+  - Arrow by Tahsin Tahil
 
 - Other
   - Shannon Riester for help with File Reader

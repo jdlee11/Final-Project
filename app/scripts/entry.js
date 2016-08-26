@@ -47,7 +47,9 @@ let router = (
     <Route path="edit/:id" component={EditRecipePage}>
       <Route path="confirm" component={ConfirmModal}/>
     </Route>
-    <Route path="new" component={NewRecipePage}/>
+    <Route path="new" component={NewRecipePage}>
+      <Route path="confirm" component={ConfirmModal}/>
+    </Route>
     <Route path="logout" component={LogOutPage}/>
   </Router>
 );

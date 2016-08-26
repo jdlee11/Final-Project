@@ -95,7 +95,7 @@ let NewRecipePage = React.createClass({
     recipeCollection.create(newRecipe, {
       success: function(response){
         console.log(response);
-        hashHistory.push('recipes');
+        hashHistory.push(`new/confirm`);
       }
     });
   },

@@ -94,8 +94,6 @@ let EditRecipePage = React.createClass({
       return (<div className="form-steps" key={i} onClick={self.removeStep}>{step}</div>);
     });
     let saveButton;
-    console.log(this.state.recipe);
-    console.log(session.get('userId'));
     let editRecipeContents;
     if (this.state.recipe){
       if (this.state.recipe.userid === session.get('userId')){

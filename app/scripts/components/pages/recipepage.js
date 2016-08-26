@@ -7,9 +7,7 @@ import session from '../../models/session';
 let RecipePage = React.createClass({
   getInitialState: function(){
     return {
-      recipe: null,
-      canLike: false,
-      canSave: false
+      recipe: null
     };
   },
   componentDidMount: function(){
@@ -23,10 +21,15 @@ let RecipePage = React.createClass({
   editFunction: function(){
     hashHistory.push(`edit/${this.props.params.id}`);
   },
+  cookFunction: function(){
+    hashHistory.push(`recipes/${this.props.params.id}/cookit`);
+  },
   render: function(){
     let recipeDetails;
     if (this.state.recipe){
-      let keywordList = (<p className="recipe-keywords">{this.state.recipe.keywords.join(', ')}</p>);
+      let keywordList = this.state.recipe.keywords.map(function(word, i){
+        return (<p className="recipe-keyword" key={i}>{word}</p>);
+      });
       let ingredientsList = this.state.recipe.ingredients.map(function(ingredient, i){
         return (<li key={i}>{ingredient}</li>)
       });
@@ -47,21 +50,27 @@ let RecipePage = React.createClass({
       }
       recipeDetails = (
         <div className="recipe-page">
-          <img className="recipe-page-photo" src={imageSrc} />
-          <h1>{this.state.recipe.title}</h1>
-          <p className="author">by <Link to={`profiles/${this.state.recipe.userid}/recipes`}>
-            {this.state.recipe.username}</Link>
-            {editButton}
-          </p>
-          {keywordList}
-          <p className="description-box">
-            {this.state.recipe.description}
-          </p>
-          <p>
-            <img className="timer" src="assets/timerIcon.png" />
-            {this.state.recipe.time}
-          </p>
+          <div className="recipe-page-photo-container">
+            <img src={imageSrc} />
+          </div>
+          <div className="recipe-page-details">
+            <h1>{this.state.recipe.title}</h1>
+            <p className="author">by <Link to={`profiles/${this.state.recipe.userid}/recipes`}>
+              {this.state.recipe.username}</Link>
+              {editButton}
+            </p>
+            <div className="keyword-list">
+              {keywordList}
+            </div>
+            <p className="description-box">
+              {this.state.recipe.description}
+            </p>
+          </div>
           <div className="ingredient-box">
+            <img className="timer" src="assets/timerIcon.png" />
+            <p>
+              {this.state.recipe.time}
+            </p>
             <h2>Ingredients</h2>
             <ul className="ingredients">
               {ingredientsList}
@@ -69,10 +78,11 @@ let RecipePage = React.createClass({
           </div>
           <div className="steps-box">
             <h2>Steps</h2>
-            <ul className="steps">
+            <ol className="steps">
               {stepsList}
-            </ul>
+            </ol>
           </div>
+          <input type="button" className="cookit-button" value="Make this recipe" onClick={this.cookFunction}/>
         </div>
       );
     }

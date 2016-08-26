@@ -1,11 +1,19 @@
-$orange: #ff7d00;
+$orange: #ffb366;
+$blue: #00b8e6;
+$darker-blue: #008fb3;
+$white: #f2f2f2;
+$recipe-font: 'Shadows Into Light', cursive;
 
 body {
   margin: 0;
+  width: 100vw;
+  height: 100vh;
+  background: $white;
+}
+.container {
   width: 100%;
   height: 100%;
 }
-
 .header {
   height: 100px;
   background: $orange;
@@ -51,27 +59,88 @@ body {
 .whole-container {
   position: relative;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
 }
 
 .all-recipes {
   text-align: center;
+  position: relative;
+  padding-left: 150px;
+}
+.search-placeholder {
+  font-size: 50px;
+  text-align: center;
+  color: #444;
+}
+.recipe-page-nav {
+  display: block;
+  height: 50px;
+  width: 200px;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 20px;
+  p {
+    display: inline-block;
+    color: $darker-blue;
+    font-family: helvetica;
+  }
+}
+.recipe-page-arrow {
+  height: 50px;
+  width: 30px;
+}
+.sidebar {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  float: left;
+  height: 100vh;
+  width: 135px;
+  border-right: 1px solid $orange;
+  padding: 10px;
+  padding-left: 20px;
+  padding-top: 100px;
+  text-align: left;
+  overflow: auto;
+  a {
+    text-decoration: none;
+    display: block;
+    margin-top: 10px;
+    font-size: 22px;
+    color: $darker-blue;
+    font-weight: bold;
+  }
+  label {
+    display: block;
+    font-size: 20px;
+    margin-top: 10px;
+    color: $darker-blue;
+  }
 }
 .recipe-home {
   display: inline-block;
+  background: #fff;
   width: 250px;
-  height: auto;
+  height: 360px;
   vertical-align: top;
-  border: 1px solid $orange;
-  border-radius: 7px;
-  margin: 5px;
+  // border: 1px solid $orange;
+  // border-radius: 7px;
+  margin: 10px;
   padding: 5px;
   text-align: left;
   font-family: helvetica;
   overflow: hidden;
-  .photo {
-    width: 250px;
-    height: auto;
+  .photo-container {
+    width: 100%;
+    margin: 0 auto;
+    height: 200px;
+    text-align: center;
+    margin-bottom: 5px;
+    .photo {
+      height: 200px;
+      width: auto;
+      margin: 0 -100%;
+    }
   }
   a {
     text-decoration: none;
@@ -94,9 +163,6 @@ body {
       width: 25px;
       margin-right: 5px;
     }
-  }
-  .home-description {
-    display: block;
   }
 }
 .recipe-button-container {
@@ -138,6 +204,9 @@ body {
     width: 100px;
     font-size: 30px;
   }
+  a {
+    text-decoration: none;
+  }
 }
 
 .signup-div {
@@ -145,9 +214,147 @@ body {
 }
 
 .profile-page {
-  margin: 10px;
+  width: 100%;
+  text-align: center;
+  .profile-tab-list {
+    display: block;
+    border-bottom: 2px solid $orange;
+  }
+}
+.profile-tab, .selected-profile-tab {
+  line-height: 37px;
+  padding: 9px;
+  padding-right: 30px;
+  padding-left: 30px;
+  border: 2px solid $orange;
+  text-decoration: none;
+  font-size: 20px;
+  margin-right: 15px;
+  margin-left: 15px;
+  background: transparent;
+  border-bottom: transparent;
+  color: $darker-blue;
+  transition: padding-top 0.3s;
+}
+.selected-profile-tab {
+  background: $white;
+  border-top: 6px solid $orange;
+  padding-top: 5px;
+}
+.profile-tab:hover {
+  padding-top: 14px;
+  transition: padding-top 0.3s;
 }
 
+.recipe-page {
+  padding: 10px;
+}
+.recipe-page-details {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 20px;
+  width: 40vw;
+  min-width: 200px;
+  h1 {
+    font-size: 4vw;
+    margin: 4px;
+  }
+  p {
+    margin: 10px;
+  }
+  p.author {
+    display: inline-block;
+    margin-right: 15px;
+    a {
+      text-decoration: none;
+      color: $darker-blue;
+    }
+  }
+  p.description-box {
+    font-size: 2.5vw;
+  }
+}
+.keyword-list {
+  display: inline-block;
+  p.recipe-keyword {
+    display: inline-block;
+    margin: 5px;
+    padding: 4px;
+    line-height: 80%;
+    border: 0.5px solid $darker-blue;
+    color: black;
+    border-radius: 20px;
+  }
+}
+.recipe-page-photo-container {
+  text-align: center;
+  height: 37.5vw;
+  width: 50vw;
+  overflow: hidden;
+  display: inline-block;
+  img {
+    height: 37.5vw;
+    width: auto;
+    margin: 0 -100%;
+  }
+}
+.author .edit-button {
+  height: 30px;
+  width: 30px;
+}
+.ingredient-box {
+  display: inline-block;
+  float: right;
+  width: 40%;
+  border: 1px solid $orange;
+  border-radius: 5px;
+  margin-right: -3%;
+  margin-bottom: 15px;
+  padding: 10px;
+  position: relative;
+  img {
+    position: absolute;
+    left: 10px;
+    height: 30px;
+    width: 30px;
+  }
+  p {
+    position: absolute;
+    left: 50px;
+    font-size: 20px;
+    top: -4px;
+  }
+  h2 {
+    margin-top: 40px;
+    margin-bottom: 5px;
+  }
+}
+.ingredients {
+
+}
+.steps-box {
+  display: inline-block;
+  width: 50%;
+}
+.cookit-button {
+  display: block;
+  margin: 0 auto;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  height: 50px;
+  width: 200px;
+  font-size: 24px;
+  background: $darker-blue;
+  color: $white;
+  border: none;
+  box-shadow: inset 0 0 5px #000;
+  transition: color 0.7s;
+  clear: both;
+  &:hover {
+    background: #00a3cc;
+    color: white;
+  }
+}
 .new-recipe-page {
 
 }
@@ -156,8 +363,9 @@ body {
   width: 15px;
 }
 .timer {
-  height: 20px;
-  width: 20px;
+  height: 25px;
+  width: 25px;
+  margin-right: 10px;
 }
 .dropzone {
   width: 200px;
@@ -177,23 +385,159 @@ body {
 .new-details {
   display: inline-block;
 }
-.author .edit-button {
-  height: 30px;
-  width: 30px;
-}
 
 .modal-wrap {
   background: rgba(0, 0, 0, 0.7);
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: fixed;
   top: 0px;
   left: 0px;
 }
 .confirm-modal {
   height: 150px;
   width: 300px;
-  background: $orange;
+  background: white;
   margin: 0 auto;
   margin-top: 100px;
+  text-align: center;
+  a {
+    text-decoration: none;
+    color: $darker-blue;
+    margin-top: 40px;
+    font-size: 20px;
+  }
 }
+.cookit-modal-container {
+  height: 500px;
+  width: 300px;
+  background: $blue;
+  color: $white;
+  font-weight: bold;
+  margin: 0 auto;
+  margin-top: 20px;
+  border: 3px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  position: relative;
+  .close-modal {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    height: 20px;
+    width: 20px;
+  }
+}
+.modal-contents {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  font-family: $recipe-font;
+  .step-container {
+    background: $white;
+    color: #333;
+    height: 330px;
+    width: 270px;
+    margin: 0 auto;
+    margin-top: 15px;
+    p {
+      padding: 20px;
+      font-size: 20px;
+    }
+  }
+  nav {
+    display: block;
+    height: 25px;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+  }
+  h1 {
+    margin: 5px;
+    margin-top: 15px;
+    text-align: center;
+  }
+}
+.modal-ingredients {
+  height: 200px;
+  overflow: auto;
+  border: 1px solid #ddd;
+  li {
+    font-size: 20px;
+  }
+}
+.modal-nav-arrow {
+  height: 25px;
+  width: 25px;
+}
+.float-right {
+  float: right;
+}
+.float-left {
+  float: left;
+}
+.unchecked-step {
+  height: 52px;
+  width: 54px;
+  margin: 0 auto;
+  margin-top: 16px;
+  margin-bottom: 37px;
+  display: block;
+}
+.checked-step {
+  height: 61px;
+  width: 74px;
+  margin: 0 auto;
+  margin-top: 9px;
+  display: block;
+}
+.progress-bar {
+  height: 10px;
+  width: 150px;
+  border-radius: 5px;
+  position: relative;
+  background: $darker-blue;
+  margin: 0 auto;
+  margin-top: 35px;
+  .fill {
+    height: 10px;
+    border-radius: 5px;
+    position: absolute;
+    left: 0px;
+    background: $white;
+    transition: width 0.8s;
+  }
+}
+.complete-button {
+  display: block;
+  height: 40px;
+  width: 80px;
+  font-size: 35px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+.modal-like-options {
+  text-align: center;
+  vertical-align: middle;
+}
+.bookmark-tag-modal {
+  height: 60px;
+  width: 42px;
+  margin-left: 40px;
+}
+.like-tag-modal {
+  width: 42px;
+  height: 42px;
+  margin-bottom: 8px;
+}
+
+//media queries
+
+
+
+
+
+
+
+
+//

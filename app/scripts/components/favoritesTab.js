@@ -26,11 +26,15 @@ let FavoritesTab = React.createClass({
   },
   render: function(){
     let bookmarkList;
-    if (this.state.bookmarks){
+    if (this.state.bookmarks && this.state.bookmarks.length > 0){
       bookmarkList = this.state.bookmarks.map(function(item, i){
         let recipe = recipeCollection.get(item.recipeId);
         return (<RecipeHome recipe={recipe.toJSON()} key={i}/>);
       });
+    } else if (this.state.bookmarks){
+      bookmarkList = (<h2>This user has no bookmarked recipes</h2>);
+    } else {
+      bookmarkList = (<h2>Loading...</h2>);
     }
     return (
       <div className="tab-container">

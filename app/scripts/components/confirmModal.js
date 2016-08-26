@@ -3,7 +3,6 @@ import { Link } from 'react-router';
 
 let ConfirmModal = React.createClass({
   render: function(){
-    console.log(this);
     let link;
     if (this.props.params.id){
       link = (<Link to={`recipes/${this.props.params.id}`}>Return to recipe</Link>);

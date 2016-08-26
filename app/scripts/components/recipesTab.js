@@ -1,6 +1,6 @@
 import React from 'react';
 import RecipeHome from './recipehome';
-import recipesCollection from '../collections/recipes';
+import recipeCollection from '../collections/recipes';
 
 let RecipesTab = React.createClass({
   getInitialState: function(){
@@ -9,7 +9,7 @@ let RecipesTab = React.createClass({
     }
   },
   componentDidMount: function(){
-    recipesCollection.fetch({
+    recipeCollection.fetch({
       data: {
         query: JSON.stringify({
           _acl: {
@@ -23,10 +23,14 @@ let RecipesTab = React.createClass({
   },
   render: function(){
     let recipeList;
-    if (this.state.recipes){
+    if (this.state.recipes && this.state.recipes.length > 0){
       recipeList = this.state.recipes.map(function(item, i){
         return (<RecipeHome recipe={item} key={i}/>);
       });
+    } else if (this.state.recipes){
+      recipeList = (<h2>This user has no uploaded recipes</h2>);
+    } else {
+      recipeList = (<h2>Loading...</h2>);
     }
     return (
       <div className="tab-container">
