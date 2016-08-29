@@ -8,9 +8,6 @@ import Dropzone from 'react-dropzone';
 import $ from 'jquery';
 import settings from '../../settings';
 
-// had issues styling input[type="submit"], had to change type to "button"
-
-
 let NewRecipePage = React.createClass({
   getInitialState: function(){
     return {
@@ -102,6 +99,11 @@ let NewRecipePage = React.createClass({
       }
     });
   },
+  adjustTextBox: function(evt){
+    // console.log(evt.target);
+    evt.target.style.height = "1px";
+    evt.target.style.height = (evt.target.scrollHeight + 20) + "px";
+  },
   render: function(){
     let recipeImage;
     if (this.state.image[0]){
@@ -137,25 +139,25 @@ let NewRecipePage = React.createClass({
             <input type="text" placeholder="Recipe Name" ref="title" required/>
 
             <form onSubmit={this.addKeywordFunction}>
-              <input type="button" onClick={this.addKeywordFunction} value="+"/>
+              <input type="submit" value="+"/>
               <input type="text" placeholder="Add Keyword" ref="addKeyword"/>
             </form>
             <div className="form-keywords">
               {keywordList}
             </div>
 
-            <textarea placeholder="Description of your recipe" ref="description"></textarea>
+            <textarea placeholder="Description of your recipe" onKeyUp={this.adjustTextBox} ref="description"></textarea>
 
-            <img className="timer" src="assets/timerIcon.png" />
-            <input type="number" placeholder="Prep time" ref="preptime" required />
           </div>
 
           <div className="form-ingredient-list">
+            <img className="timer" src="assets/timerIcon.png" />
+            <input type="number" placeholder="Prep time" ref="preptime" required />
             <h3>Ingredients</h3>
             {ingredientsList}
           </div>
           <form onSubmit={this.addIngredientFunction}>
-            <input type="button" onClick={this.addIngredientFunction} value="+"/>
+            <input type="submit" value="+"/>
             <input type="text" placeholder="Add Ingredient" ref="addIngredient"/>
           </form>
 
@@ -164,7 +166,7 @@ let NewRecipePage = React.createClass({
             {stepsList}
           </div>
           <form onSubmit={this.addStepFunction}>
-            <input type="button" onClick={this.addStepFunction} value="+"/>
+            <input type="submit" className="add-button" value="+"/>
             <input type="text" placeholder="Add Step" ref="addStep"/>
           </form>
 
