@@ -21,7 +21,7 @@ let AllRecipesPage = React.createClass({
     };
   },
   componentDidMount: function(){
-    if (!session.get('authtoken')){
+    if (!localStorage.getItem('authtoken')){
       session.save({username: 'anonymous', password: 'password'},
       {
         url: session.urlRoot,

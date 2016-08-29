@@ -1,0 +1,144 @@
+.modal-wrap {
+  background: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+.confirm-modal {
+  height: 150px;
+  width: 300px;
+  background: white;
+  margin: 0 auto;
+  margin-top: 100px;
+  text-align: center;
+  a {
+    text-decoration: none;
+    color: $darker-blue;
+    margin-top: 40px;
+    font-size: 20px;
+  }
+}
+.cookit-modal-container {
+  height: 500px;
+  width: 300px;
+  background: $blue;
+  color: $white;
+  font-weight: bold;
+  margin: 0 auto;
+  margin-top: 20px;
+  border: 3px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  position: relative;
+  .close-modal {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    height: 20px;
+    width: 20px;
+  }
+}
+.modal-contents {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  font-family: $recipe-font;
+  .step-container {
+    background: $white;
+    color: #333;
+    height: 330px;
+    width: 270px;
+    margin: 0 auto;
+    margin-top: 15px;
+    p {
+      padding: 20px;
+      font-size: 20px;
+    }
+  }
+  nav {
+    display: block;
+    height: 25px;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+  }
+  h1 {
+    margin: 5px;
+    margin-top: 15px;
+    text-align: center;
+  }
+}
+.modal-ingredients {
+  height: 200px;
+  overflow: auto;
+  border: 1px solid #ddd;
+  li {
+    font-size: 20px;
+  }
+}
+.modal-nav-arrow {
+  height: 25px;
+  width: 25px;
+}
+.float-right {
+  float: right;
+}
+.float-left {
+  float: left;
+}
+.unchecked-step {
+  height: 52px;
+  width: 54px;
+  margin: 0 auto;
+  margin-top: 16px;
+  margin-bottom: 37px;
+  display: block;
+}
+.checked-step {
+  height: 61px;
+  width: 74px;
+  margin: 0 auto;
+  margin-top: 9px;
+  display: block;
+}
+.progress-bar {
+  height: 10px;
+  width: 150px;
+  border-radius: 5px;
+  position: relative;
+  background: $darker-blue;
+  margin: 0 auto;
+  margin-top: 35px;
+  .fill {
+    height: 10px;
+    border-radius: 5px;
+    position: absolute;
+    left: 0px;
+    background: $white;
+    transition: width 0.8s;
+  }
+}
+.complete-button {
+  display: block;
+  height: 40px;
+  width: 80px;
+  font-size: 35px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+.modal-like-options {
+  text-align: center;
+  vertical-align: middle;
+}
+.bookmark-tag-modal {
+  height: 60px;
+  width: 42px;
+  margin-left: 40px;
+}
+.like-tag-modal {
+  width: 42px;
+  height: 42px;
+  margin-bottom: 8px;
+}

@@ -1,0 +1,114 @@
+.recipe-page {
+  padding: 10px;
+}
+.recipe-page-details {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 20px;
+  width: 40vw;
+  min-width: 200px;
+  h1 {
+    font-size: 4vw;
+    margin: 4px;
+  }
+  p {
+    margin: 10px;
+  }
+  p.author {
+    display: inline-block;
+    margin-right: 15px;
+    a {
+      text-decoration: none;
+      color: $darker-blue;
+    }
+  }
+  p.description-box {
+    font-size: 2.5vw;
+  }
+}
+.keyword-list {
+  display: inline-block;
+  p.recipe-keyword {
+    display: inline-block;
+    margin: 5px;
+    padding: 4px;
+    line-height: 80%;
+    border: 0.5px solid $darker-blue;
+    color: black;
+    border-radius: 20px;
+  }
+}
+.recipe-page-photo-container {
+  text-align: center;
+  height: 37.5vw;
+  width: 50vw;
+  overflow: hidden;
+  display: inline-block;
+  img {
+    height: 37.5vw;
+    width: auto;
+    margin: 0 -100%;
+  }
+}
+.author .edit-button {
+  height: 30px;
+  width: 30px;
+}
+.ingredient-box {
+  display: inline-block;
+  float: right;
+  width: 40%;
+  border: 1px solid $orange;
+  border-radius: 5px;
+  margin-right: -3%;
+  margin-bottom: 15px;
+  padding: 10px;
+  position: relative;
+  img {
+    position: absolute;
+    left: 10px;
+    height: 30px;
+    width: 30px;
+  }
+  p {
+    position: absolute;
+    left: 50px;
+    font-size: 20px;
+    top: -4px;
+  }
+  h2 {
+    margin-top: 40px;
+    margin-bottom: 5px;
+  }
+}
+.ingredients {
+
+}
+.steps-box {
+  display: inline-block;
+  width: 50%;
+}
+.cookit-button {
+  display: block;
+  margin: 0 auto;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  height: 50px;
+  width: 200px;
+  font-size: 24px;
+  background: $darker-blue;
+  color: $white;
+  border: none;
+  box-shadow: inset 0 0 5px #000;
+  transition: color 0.7s;
+  clear: both;
+  &:hover {
+    background: #00a3cc;
+    color: white;
+  }
+}
+.timer {
+  height: 25px;
+  width: 25px;
+  margin-right: 10px;
+}

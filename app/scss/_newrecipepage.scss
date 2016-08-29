@@ -1,0 +1,75 @@
+.new-recipe-page {
+  padding: 10px;
+}
+.dropzone {
+  width: 50vw;
+  height: 37.5vw;
+  background: #fff;
+  border: 4px dashed #bbb;
+  margin-top: 15px;
+  text-align: center;
+  display: inline-block;
+  img {
+    width: 23vw;
+    height: 21vw;
+    margin-top: 18%;
+    margin-right: 10%;
+  }
+}
+.new-photo-container {
+  text-align: center;
+  height: 37.5vw;
+  width: 50vw;
+  overflow: hidden;
+  display: inline-block;
+  margin-top: 15px;
+  border: 4px dashed #bbb;
+  img {
+    height: 37.5vw;
+    width: auto;
+    margin: 0 -100%;
+  }
+}
+.new-details {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 20px;
+  margin-top: 10px;
+  width: 40vw;
+  input[placeholder="Recipe Name"] {
+    font-size: 30px;
+    width: 38vw;
+    min-width: 250px;
+    border: none;
+    margin: 4px;
+    background: transparent;
+    &:focus {
+      outline: none;
+      border-bottom: 1px solid black;
+    }
+  }
+}
+.form-keywords {
+  display: inline-block;
+  p.new-keyword {
+    display: inline-block;
+    margin: 5px;
+    padding: 4px;
+    line-height: 80%;
+    border: 0.5px solid $darker-blue;
+    color: black;
+    border-radius: 20px;
+  }
+}
+
+form {
+  input[type="submit"] {
+    font-size: 20px;
+    height: 50px;
+    width: 30px;
+  }
+}
+
+
+// query at 620 width
+  // move input from next to image to below

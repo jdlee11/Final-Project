@@ -172,7 +172,10 @@ body {
     width: 100px;
     font-size: 30px; }
   .login-div a, .signup-div a {
-    text-decoration: none; }
+    text-decoration: none;
+    color: #008fb3;
+    font-size: 20px;
+    margin-top: 20px; }
 
 .signup-div {
   height: 230px; }
@@ -303,31 +306,73 @@ body {
     background: #00a3cc;
     color: white; }
 
-.deleteButton {
-  height: 15px;
-  width: 15px; }
-
 .timer {
   height: 25px;
   width: 25px;
   margin-right: 10px; }
 
+.new-recipe-page {
+  padding: 10px; }
+
 .dropzone {
-  width: 200px;
-  height: 170px;
+  width: 50vw;
+  height: 37.5vw;
   background: #fff;
-  border: 3px dashed #bbb;
-  margin: 0 auto;
+  border: 4px dashed #bbb;
   margin-top: 15px;
   text-align: center;
   display: inline-block; }
   .dropzone img {
-    width: 80px;
-    height: 80px;
-    margin-top: 45px; }
+    width: 23vw;
+    height: 21vw;
+    margin-top: 18%;
+    margin-right: 10%; }
+
+.new-photo-container {
+  text-align: center;
+  height: 37.5vw;
+  width: 50vw;
+  overflow: hidden;
+  display: inline-block;
+  margin-top: 15px;
+  border: 4px dashed #bbb; }
+  .new-photo-container img {
+    height: 37.5vw;
+    width: auto;
+    margin: 0 -100%; }
 
 .new-details {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 20px;
+  margin-top: 10px;
+  width: 40vw; }
+  .new-details input[placeholder="Recipe Name"] {
+    font-size: 30px;
+    width: 38vw;
+    min-width: 250px;
+    border: none;
+    margin: 4px;
+    background: transparent; }
+    .new-details input[placeholder="Recipe Name"]:focus {
+      outline: none;
+      border-bottom: 1px solid black; }
+
+.form-keywords {
   display: inline-block; }
+  .form-keywords p.new-keyword {
+    display: inline-block;
+    margin: 5px;
+    padding: 4px;
+    line-height: 80%;
+    border: 0.5px solid #008fb3;
+    color: black;
+    border-radius: 20px; }
+
+form input[type="submit"] {
+  font-size: 20px;
+  height: 50px;
+  width: 30px; }
 
 .modal-wrap {
   background: rgba(0, 0, 0, 0.7);

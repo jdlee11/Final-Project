@@ -6,7 +6,7 @@ import session from '../models/session';
 let Header = React.createClass({
   render: function(){
     let headerContents;
-    if (session.get('authtoken') && session.get('userId') !== '57ba04bbdd2e952342b96364'){
+    if (localStorage.getItem('authtoken') && session.get('userId') !== '57ba04bbdd2e952342b96364'){
       headerContents = (
         <div className="header">
           <Link to="recipes">

@@ -69,7 +69,11 @@ This website will allow users to share recipes with others by uploading new reci
 
 - I have created a separate "made" collection which keeps track of userIds and recipeIds. This way, I can reliably keep track of the number of times a recipe has been made. I can also modify this by adding a new "made" model whenever a user completes the step-by-step walkthrough. By doing a query for how many of these "made"s have a matching recipeId, I can get the number and show it on the RecipeHome component. Before, I had the number stored on the recipe itself, but it could not be modified by other users.
 
-- As of 8/24, I am working on the step-by-step modal, which I am calling the Cookit modal. At this very moment, it only has a list of ingredients on the first page, along with a navigation arrow. Each page, at a minimum, will have navigation arrows (useful for revisiting previous steps), a button to close the modal, and some content. The content of the first page is a list of ingredients, which the user will confirm they have by marking as complete.
+- As of 8/24, I am working on the step-by-step modal, which I am calling the Cookit modal. At this very moment, it only has a list of ingredients on the first page, along with a navigation arrow. Each page, at a minimum, will have navigation arrows (useful for revisiting previous steps), a button to close the modal, and some content. The content of the first page is a list of ingredients, which the user will confirm they have by marking as complete
+
+- the project is nearly complete. The features are pretty much all included, with the local storage (for remaining logged in upon refresh) and Kinvey error handling on the agenda. Last styling touches are in the works as well. Aside from code updates, I also will add a link to a live site and fill in some data.
+
+- localStorage is complete. Once a user is logged in, refreshing the page will keep them logged in. Likewise, when the user logs out, they remain logged out. On to the rest of the styling. Then after that, I will add a state of "invalid" to the login/signup pages, which will be set to true if there is an error authenticating the user. This way, I can check this.state.invalid and show a text box saying something like "The username or password you entered is invalid". Likewise, I can do what I did with the profile page, and show "No recipes could be retrieved" if there was a fetch error (not that there should be any)
 
 #### Giving credit where credit is due
 - Icons downloaded from thenounproject.com

@@ -1,0 +1,35 @@
+.login-div, .signup-div {
+  width: 300px;
+  height: 200px;
+  border: 1px solid $orange;
+  border-radius: 7px;
+  margin: 0 auto;
+  margin-top: 20px;
+  text-align: center;
+  h2 {
+    font-family: helvetica;
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+  input[type=text], input[type=password] {
+    height: 20px;
+    font-size: 14px;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 8px;
+  }
+  input[type=submit] {
+    width: 100px;
+    font-size: 30px;
+  }
+  a {
+    text-decoration: none;
+    color: $darker-blue;
+    font-size: 20px;
+    margin-top: 20px;
+  }
+}
+
+.signup-div {
+  height: 230px;
+}

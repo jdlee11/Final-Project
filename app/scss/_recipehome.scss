@@ -1,0 +1,62 @@
+.recipe-home {
+  display: inline-block;
+  background: #fff;
+  width: 250px;
+  height: 360px;
+  vertical-align: top;
+  // border: 1px solid $orange;
+  // border-radius: 7px;
+  margin: 10px;
+  padding: 5px;
+  text-align: left;
+  font-family: helvetica;
+  overflow: hidden;
+  .photo-container {
+    width: 100%;
+    margin: 0 auto;
+    height: 200px;
+    text-align: center;
+    margin-bottom: 5px;
+    .photo {
+      height: 200px;
+      width: auto;
+      margin: 0 -100%;
+    }
+  }
+  a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    display: block;
+    margin-left: 10px;
+  }
+  p {
+    display: inline-block;
+    margin-left: 10px;
+    .like-icon {
+      height: 20px;
+      width: 20px;
+      margin-right: 5px;
+    }
+    .tried-icon {
+      height: 25px;
+      width: 25px;
+      margin-right: 5px;
+    }
+  }
+}
+.recipe-button-container {
+  img {
+    margin-left: 10px;
+    vertical-align: middle;
+  }
+  .bookmark-tag {
+    height: 40px;
+    width: 28px;
+  }
+  .like-tag {
+    width: 28px;
+    height: 28px;
+  }
+}

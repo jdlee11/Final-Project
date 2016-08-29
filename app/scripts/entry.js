@@ -19,8 +19,10 @@ import CookitModal from './components/cookitModal';
 import ConfirmModal from './components/confirmModal';
 
 $(document).ajaxSend(function(evt, xhrAjax, jqueryAjax) {
-  if (session.get('authtoken')) {
-    xhrAjax.setRequestHeader('Authorization', 'Kinvey ' + session.get("authtoken"));
+  if (localStorage.getItem('authtoken')) {
+    xhrAjax.setRequestHeader('Authorization', 'Kinvey ' + localStorage.getItem('authtoken'));
+  } else if (session.get('authtoken')) {
+    xhrAjax.setRequestHeader('Authorization', 'Kinvey ' + session.get('authtoken'));
   } else {
     xhrAjax.setRequestHeader('Authorization', 'Basic ' + settings.basicAuth);
   }

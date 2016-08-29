@@ -23,13 +23,14 @@ const Session = Backbone.Model.extend({
       url: newUrl || this.urlRoot,
       success: (model, response) => {
         this.unset('password');
+        localStorage.setItem('authtoken', response._kmd.authtoken);
 
         // when signing up, create new user model
         if (newUrl) {
           store.users.create(username, {
             success: function(response) {
-              console.log('added to collection');
-              console.log(response);
+              // console.log('added to collection');
+              // console.log(response);
             }
           })
         }

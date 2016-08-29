@@ -8,6 +8,9 @@ import Dropzone from 'react-dropzone';
 import $ from 'jquery';
 import settings from '../../settings';
 
+// had issues styling input[type="submit"], had to change type to "button"
+
+
 let NewRecipePage = React.createClass({
   getInitialState: function(){
     return {
@@ -102,7 +105,11 @@ let NewRecipePage = React.createClass({
   render: function(){
     let recipeImage;
     if (this.state.image[0]){
-      recipeImage = (<img className="dropzone" src={this.state.image[0]} />);
+      recipeImage = (
+        <div className="new-photo-container">
+          <img src={this.state.image[0]} />
+        </div>
+      );
     } else {
       recipeImage = (
         <Dropzone className="dropzone" ref="dropzone" onDrop={this.addImageFunction}>
@@ -112,7 +119,7 @@ let NewRecipePage = React.createClass({
     }
     let self = this;
     let keywordList = this.state.keywords.map(function(word, i){
-      return (<div className="form-keyword" key={i} onClick={self.removeKeyword}>{word}</div>);
+      return (<p className="new-keyword" key={i} onClick={self.removeKeyword}>{word}</p>);
     });
     let ingredientsList = this.state.ingredients.map(function(item, i){
       return (<div className="form-ingredient" key={i} onClick={self.removeIngredient}>{item}</div>);
@@ -129,24 +136,27 @@ let NewRecipePage = React.createClass({
           <div className="new-details">
             <input type="text" placeholder="Recipe Name" ref="title" required/>
 
-            {keywordList}
             <form onSubmit={this.addKeywordFunction}>
-              <input type="submit" value="+"/>
-              <input type="text" placeholder="+ Add Keyword" ref="addKeyword"/>
+              <input type="button" onClick={this.addKeywordFunction} value="+"/>
+              <input type="text" placeholder="Add Keyword" ref="addKeyword"/>
             </form>
+            <div className="form-keywords">
+              {keywordList}
+            </div>
 
             <textarea placeholder="Description of your recipe" ref="description"></textarea>
 
             <img className="timer" src="assets/timerIcon.png" />
             <input type="number" placeholder="Prep time" ref="preptime" required />
           </div>
+
           <div className="form-ingredient-list">
             <h3>Ingredients</h3>
             {ingredientsList}
           </div>
           <form onSubmit={this.addIngredientFunction}>
-            <input type="submit" value="+"/>
-            <input type="text" placeholder="+ Add Ingredient" ref="addIngredient"/>
+            <input type="button" onClick={this.addIngredientFunction} value="+"/>
+            <input type="text" placeholder="Add Ingredient" ref="addIngredient"/>
           </form>
 
           <div className="form-step-list">
@@ -154,12 +164,13 @@ let NewRecipePage = React.createClass({
             {stepsList}
           </div>
           <form onSubmit={this.addStepFunction}>
-            <input type="submit" value="+"/>
-            <input type="text" onSubmit={this.addStepFunction} placeholder="+ Add Step" ref="addStep"/>
+            <input type="button" onClick={this.addStepFunction} value="+"/>
+            <input type="text" placeholder="Add Step" ref="addStep"/>
           </form>
 
           <input type="button" onClick={this.createFunction} value="Create Recipe!"/>
         </div>
+        {this.props.children}
       </div>
     );
   }
