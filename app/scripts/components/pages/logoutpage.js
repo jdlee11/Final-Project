@@ -5,7 +5,12 @@ import Header from '../header';
 import settings from '../../settings';
 
 let LogOutPage = React.createClass({
-  render: function(){
+  getInitialState: function(){
+    return {
+      loggedOut: false
+    };
+  },
+  componentDidMount: function(){
     session.save(null, {
       url: `https://baas.kinvey.com/user/${settings.appId}/_logout`,
       success: () => {
@@ -13,9 +18,11 @@ let LogOutPage = React.createClass({
         localStorage.removeItem('authtoken');
         localStorage.removeItem('userId');
         session.save({username: 'anonymous', password: 'password'});
+        this.setState({loggedOut: true});
       }
     });
-
+  },
+  render: function(){
     return (
       <div>
         <Header />

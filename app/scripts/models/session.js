@@ -41,6 +41,8 @@ const Session = Backbone.Model.extend({
             })
           }, success: (response, queryResponse) => {
             store.thisUser = queryResponse[0];
+          }, error: ()=> {
+            console.log('error with fetch');
           }
         });
         hashHistory.push("recipes");

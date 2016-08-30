@@ -20,7 +20,9 @@ import ConfirmModal from './components/confirmModal';
 import Error from './components/error';
 
 $(document).ajaxSend(function(evt, xhrAjax, jqueryAjax) {
-  if (localStorage.getItem('authtoken')) {
+  if (jqueryAjax.url === `https://baas.kinvey.com/user/${settings.appId}/`){
+    xhrAjax.setRequestHeader('Authorization', 'Basic ' + settings.basicAuth);
+  } else if (localStorage.getItem('authtoken')) {
     xhrAjax.setRequestHeader('Authorization', 'Kinvey ' + localStorage.getItem('authtoken'));
   } else if (session.get('authtoken')) {
     xhrAjax.setRequestHeader('Authorization', 'Kinvey ' + session.get('authtoken'));

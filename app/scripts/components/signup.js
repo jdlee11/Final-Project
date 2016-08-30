@@ -14,7 +14,7 @@ let Signup = React.createClass({
     let password = this.refs.password.value;
     let confirm = this.refs.confirm.value;
     if (password === confirm && username !== ""){
-      canSignup = session.login(username, password, `https://baas.kinvey.com/user/${settings.appId}/`);
+      session.login(username, password, `https://baas.kinvey.com/user/${settings.appId}/`);
     } else {
       hashHistory.push("signup/error");
     }
