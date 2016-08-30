@@ -18,10 +18,14 @@ let EditRecipePage = React.createClass({
   },
   componentDidMount: function(){
     let recipe = recipeCollection.get(this.props.params.id);
-    this.setState({recipe: recipe.toJSON()});
-    this.setState({keywords: recipe.keywords});
-    this.setState({ingredients: recipe.ingredients});
-    this.setState({steps: recipe.steps});
+    if (!recipe){
+      hashHistory.push(`recipes/${this.props.params.id}`);
+    } else {
+      this.setState({recipe: recipe.toJSON()});
+      this.setState({keywords: recipe.keywords});
+      this.setState({ingredients: recipe.ingredients});
+      this.setState({steps: recipe.steps});  
+    }
   },
   removeArrayItem: function(array, item){
     let newArray = array;

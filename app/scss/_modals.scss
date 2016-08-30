@@ -120,12 +120,17 @@
   }
 }
 .complete-button {
+  background: $white;
   display: block;
   height: 40px;
-  width: 80px;
-  font-size: 35px;
+  width: 100px;
+  font-size: 25px;
   margin: 0 auto;
   margin-top: 20px;
+  border-radius: 10px;
+  &:focus {
+    outline: none;
+  }
 }
 .modal-like-options {
   text-align: center;

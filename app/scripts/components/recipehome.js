@@ -17,7 +17,7 @@ let RecipeHome = React.createClass({
     };
   },
   componentDidMount: function(){
-    
+
     this.setState({recipe: recipeCollection.get(this.props.recipe._id).toJSON()});
 
     // check if this recipe is already liked by the user
@@ -141,7 +141,8 @@ let RecipeHome = React.createClass({
     } else {
       bookmarkTagSrc = "assets/noun_100771_cc_off.png";
     }
-    if (session.get('userId') !== '57ba04bbdd2e952342b96364'){
+    if (session.get('userId') !== '57ba04bbdd2e952342b96364'
+      && localStorage.getItem('userId') !== 'undefined'){
       likeTag = (<img className="like-tag"
         src={likeTagSrc}
         onClick={this.toggleLike}/>);

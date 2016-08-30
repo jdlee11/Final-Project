@@ -60,7 +60,7 @@
   width: 40%;
   border: 1px solid $orange;
   border-radius: 5px;
-  margin-right: -3%;
+  margin-right: 3px;
   margin-bottom: 15px;
   padding: 10px;
   position: relative;
@@ -80,9 +80,6 @@
     margin-top: 40px;
     margin-bottom: 5px;
   }
-}
-.ingredients {
-
 }
 .steps-box {
   display: inline-block;
@@ -115,18 +112,19 @@
 
 
 // query at 570 width
-  // move details below picture, change title font size to prevent further shrinking
 @media screen and (max-width: 570px){
   .recipe-page-photo-container {
-    width: 100vw;
-    height: 75vw;
+    display: block;
+    width: 90vw;
+    height: 67.5vw;
+    margin: 0 auto;
     img {
-      height: 75vw;
+      height: 67.5vw;
     }
   }
   .recipe-page-details {
     display: block;
-    width: 100vw;
+    width: 90vw;
     margin: 0 auto;
     margin-bottom: 15px;
     h1 {
@@ -136,13 +134,14 @@
   .ingredient-box {
     float: none;
     display: block;
-    width: 100vw;
-    margin: 0;
+    width: 85vw;
+    margin: 0 auto;
   }
   .steps-box {
     display: block;
-    width: 90vw;
+    width: 85vw;
     padding-right: 30px;
+    margin: 0 auto;
     margin-bottom: 10px;
   }
 }

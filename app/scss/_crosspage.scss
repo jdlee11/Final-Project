@@ -3,6 +3,7 @@ body {
   width: 100vw;
   height: 100vh;
   background: $white;
+  min-width: 300px;
 }
 .container {
   width: 100%;
@@ -16,7 +17,7 @@ body {
     width: 50px;
     height: 50px;
     position: absolute;
-    left: 45px;
+    left: 49px;
     top: 5px;
   }
   h1 {
@@ -27,8 +28,8 @@ body {
     font-size: 40px;
     top: 55px;
     color: white;
-    margin-top: -11px;
-    margin-left: 17px;
+    // margin-top: -11px;
+    // margin-left: 17px;
   }
   a {
     text-align: center;

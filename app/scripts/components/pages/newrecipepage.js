@@ -151,24 +151,24 @@ let NewRecipePage = React.createClass({
             <img className="timer" src="assets/timerIcon.png" />
             <input type="number" placeholder="Prep time" ref="preptime" required />
             <h3>Ingredients</h3>
-            <ul>
-              {ingredientsList}
-            </ul>
             <form onSubmit={this.addIngredientFunction}>
               <input type="submit" value="+"/>
               <input type="text" placeholder="Add Ingredient" ref="addIngredient"/>
             </form>
+            <ul>
+              {ingredientsList}
+            </ul>
           </div>
 
           <div className="form-step-list">
             <h3>Instructions</h3>
-            <ul>
-              {stepsList}
-            </ul>
             <form onSubmit={this.addStepFunction}>
               <input type="submit" className="add-button" value="+"/>
               <input type="text" placeholder="Add Step" ref="addStep"/>
             </form>
+            <ol>
+              {stepsList}
+            </ol>
           </div>
 
           <input className="create-button" type="button" onClick={this.createFunction} value="Create Recipe!"/>

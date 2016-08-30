@@ -1,7 +1,7 @@
 .new-recipe-page {
   padding: 10px;
 }
-.dropzone {
+.dropzone, .new-photo-container {
   width: 50vw;
   height: 37.5vw;
   background: #fff;
@@ -17,13 +17,7 @@
   }
 }
 .new-photo-container {
-  text-align: center;
-  height: 37.5vw;
-  width: 50vw;
   overflow: hidden;
-  display: inline-block;
-  margin-top: 15px;
-  border: 4px dashed #bbb;
   img {
     height: 37.5vw;
     width: auto;
@@ -37,7 +31,7 @@
   margin-top: 10px;
   width: 40vw;
   input[placeholder="Recipe Name"] {
-    font-size: 30px;
+    font-size: 4vw;
     width: 38vw;
     min-width: 250px;
     border: none;
@@ -81,7 +75,7 @@
     background: none;
     font-size: 16px;
     height: 25px;
-    width: 200px;
+    width: 180px;
     border: none;
     margin-left: 10px;
     margin-bottom: 10px;
@@ -112,7 +106,7 @@
   width: 40%;
   border: 1px solid $orange;
   border-radius: 5px;
-  margin-right: -3%;
+  margin-right: 3;
   margin-bottom: 15px;
   padding: 10px;
   input[type="number"] {
@@ -120,10 +114,23 @@
     width: 90px;
     font-size: 16px;
     vertical-align: top;
+    &:focus {
+      outline: none;
+    }
   }
+}
+.form-step-list {
+  display: inline-block;
+  width: 50%;
+}
+.form-ingredient, .form-step {
+  font-family: helvetica;
+  font-size: 15px;
+  line-height: 20px;
 }
 .create-button, .change-button {
   display: block;
+  clear: both;
   margin: 0 auto;
   margin-top: 15px;
   margin-bottom: 20px;
@@ -135,11 +142,59 @@
   border: none;
   box-shadow: inset 0 0 5px #000;
   transition: color 0.7s;
-  clear: both;
   &:hover {
     background: #00a3cc;
     color: white;
   }
 }
-// query at 620 width
-  // move input from next to image to below
+
+// query at 570 width
+@media screen and (max-width: 570px){
+  .new-recipe-page {
+    padding: 0px;
+  }
+  .dropzone, .new-photo-container {
+    display: block;
+    width: 90vw;
+    height: 67.5vw;
+    margin: 0 auto;
+    img {
+      width: 46vw;
+      height: 42vw;
+    }
+  }
+  .new-photo-container {
+    img {
+      height: 67.5vw;
+      width: auto;
+    }
+  }
+  .new-details {
+    display: block;
+    width: 90vw;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    input[placeholder="Recipe Name"] {
+      font-size: 20px;
+    }
+  }
+  .form-ingredient-list {
+    float: none;
+    display: block;
+    width: 85vw;
+    margin: 0 auto;
+    ul {
+      margin-top: 0;
+    }
+  }
+  .form-step-list {
+    display: block;
+    width: 85vw;
+    padding-right: 30px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    ol {
+      margin-top: 0;
+    }
+  }
+}
