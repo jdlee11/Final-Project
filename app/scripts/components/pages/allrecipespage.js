@@ -17,6 +17,7 @@ let AllRecipesPage = React.createClass({
       maxItems: 2,
       retrievedPage: false, // found it necessary to wait for all the page's recipes to be fetched
       searchTerms: [],
+      searchOpen: false,
       allSearchTerms: ["all recipes", "quick", "easy", "chicken", "spicy", "meat", "vegetarian", "breakfast", "american"]
     };
   },
@@ -25,8 +26,10 @@ let AllRecipesPage = React.createClass({
       session.save({username: 'anonymous', password: 'password'},
       {
         url: session.urlRoot,
-        success: () => {
+        success: (response) => {
           this.setState({loggedIn: true});
+          localStorage.setItem('authtoken', response.toJSON().authtoken);
+          localStorage.setItem('userId', response.toJSON()._id);
           recipeCollection.fetch({
             url: `${recipeCollection.url}/_count`,
             success: (response, count) => {
@@ -50,6 +53,7 @@ let AllRecipesPage = React.createClass({
       this.setState({searchTerms: this.state.searchTerms.concat(evt.target.value)});
     }
     this.setState({page: 0});
+    this.setState({canPageLeft: false});
     setTimeout(() => {
       this.getPageData();
     }, 100);
@@ -112,6 +116,15 @@ let AllRecipesPage = React.createClass({
       });
     }
   },
+  openSearch: function(evt){
+    if (evt.target.tagName === "DIV"){
+      if (this.state.searchOpen){
+        this.setState({searchOpen: false});
+      } else {
+        this.setState({searchOpen: true});
+      }
+    }
+  },
   render: function(){
     let recipeList;
     let nav;
@@ -121,11 +134,20 @@ let AllRecipesPage = React.createClass({
       }
       return (<label onClick={this.toggleSearch} key={i}><input type="checkbox" value={item}/> {item}</label>);
     });
-    let sideBar = (
-      <div className="sidebar">
-        {searchTermList}
-      </div>
-    );
+    let sideBar;
+    if (this.state.searchOpen) {
+      sideBar = (
+        <div className="sidebar open-sidebar" onClick={this.openSearch}>
+          {searchTermList}
+        </div>
+      );
+    } else {
+      sideBar = (
+        <div className="sidebar" onClick={this.openSearch}>
+          {searchTermList}
+        </div>
+      );
+    }
 
     if (this.state.retrievedPage){
       recipeList = this.state.recipes.map((item, i) => {

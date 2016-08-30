@@ -22,6 +22,7 @@ let Login = React.createClass({
             <input type="submit" value="Submit"/>
           </form>
         </div>
+        {this.props.children}
       </div>
     );
   }

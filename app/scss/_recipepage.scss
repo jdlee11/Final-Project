@@ -116,3 +116,33 @@
 
 // query at 570 width
   // move details below picture, change title font size to prevent further shrinking
+@media screen and (max-width: 570px){
+  .recipe-page-photo-container {
+    width: 100vw;
+    height: 75vw;
+    img {
+      height: 75vw;
+    }
+  }
+  .recipe-page-details {
+    display: block;
+    width: 100vw;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    h1 {
+      font-size: 20px;
+    }
+  }
+  .ingredient-box {
+    float: none;
+    display: block;
+    width: 100vw;
+    margin: 0;
+  }
+  .steps-box {
+    display: block;
+    width: 90vw;
+    padding-right: 30px;
+    margin-bottom: 10px;
+  }
+}

@@ -21,11 +21,14 @@ body {
   }
   h1 {
     margin: 0;
+    display: inline-block;
     position: absolute;
-    left: 15px;
+    left: 4px;
     font-size: 40px;
-    top: 45px;
+    top: 55px;
     color: white;
+    margin-top: -11px;
+    margin-left: 17px;
   }
   a {
     text-align: center;
@@ -54,4 +57,59 @@ body {
   position: relative;
   width: 100vw;
   height: 100%;
+}
+
+// media query 440
+@media screen and (max-width: 440px){
+  .header {
+    height: 190px;
+    text-align: center;
+    .logo {
+      position: static;
+      display: block;
+      margin: 0 auto;
+    }
+    h1 {
+      position: static;
+      display: block;
+      margin: 0 auto;
+      margin-top: -11px;
+      margin-left: 16px;
+    }
+    a {
+      float: none;
+      display: inline-block;
+      margin-top: -15px;;
+    }
+    a:first-child {
+      display: block;
+      padding-top: 25px;
+    }
+  }
+}
+
+// query at width 320px
+@media screen and (max-width: 320px){
+  .header {
+    height: 140px;
+    .logo {
+      margin-bottom: 15px;
+    }
+    h1 {
+      display: none;
+    }
+    a p {
+      display: none;
+    }
+  }
+  .header a .header-icon {
+    width: 40px;
+    height: 40px;
+    margin: 10px 5px 1px 5px;
+    &:hover {
+      width: 48px;
+      height: 48px;
+      margin: 8px 1px -5px 1px;
+    }
+  }
 }

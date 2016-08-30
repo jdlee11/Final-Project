@@ -17,6 +17,7 @@ import RecipesTab from './components/recipesTab';
 import EditRecipePage from './components/pages/editrecipepage';
 import CookitModal from './components/cookitModal';
 import ConfirmModal from './components/confirmModal';
+import Error from './components/error';
 
 $(document).ajaxSend(function(evt, xhrAjax, jqueryAjax) {
   if (localStorage.getItem('authtoken')) {
@@ -34,8 +35,12 @@ let router = (
     <Route path="/" component={Header}>
       <IndexRedirect to="/recipes"/>
     </Route>
-    <Route path="signup" component={Signup}/>
-    <Route path="login" component={Login}/>
+    <Route path="signup" component={Signup}>
+      <Route path="error" component={Error}/>
+    </Route>
+    <Route path="login" component={Login}>
+      <Route path="error" component={Error}/>
+    </Route>
     <Route path="recipes" component={AllRecipesPage}/>
     <Route path="recipes/:id" component={RecipePage}>
       <Route path="cookit" component={CookitModal}/>

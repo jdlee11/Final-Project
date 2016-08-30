@@ -3,6 +3,7 @@ import React from 'react';
 import settings from '../settings';
 import Header from './header';
 import session from '../models/session';
+import { hashHistory } from 'react-router';
 
 let Signup = React.createClass({
   // use state to show error
@@ -13,9 +14,9 @@ let Signup = React.createClass({
     let password = this.refs.password.value;
     let confirm = this.refs.confirm.value;
     if (password === confirm && username !== ""){
-      session.login(username, password, `https://baas.kinvey.com/user/${settings.appId}/`);
+      canSignup = session.login(username, password, `https://baas.kinvey.com/user/${settings.appId}/`);
     } else {
-      console.log('invalid');
+      hashHistory.push("signup/error");
     }
   },
   render: function(){
@@ -31,6 +32,7 @@ let Signup = React.createClass({
             <input type="submit" value="Submit"/>
           </form>
         </div>
+        {this.props.children}
       </div>
     );
   }

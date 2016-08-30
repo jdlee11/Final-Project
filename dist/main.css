@@ -20,11 +20,14 @@ body {
     top: 5px; }
   .header h1 {
     margin: 0;
+    display: inline-block;
     position: absolute;
-    left: 15px;
+    left: 4px;
     font-size: 40px;
-    top: 45px;
-    color: white; }
+    top: 55px;
+    color: white;
+    margin-top: -11px;
+    margin-left: 17px; }
   .header a {
     text-align: center;
     float: right;
@@ -48,6 +51,45 @@ body {
   width: 100vw;
   height: 100%; }
 
+@media screen and (max-width: 440px) {
+  .header {
+    height: 190px;
+    text-align: center; }
+    .header .logo {
+      position: static;
+      display: block;
+      margin: 0 auto; }
+    .header h1 {
+      position: static;
+      display: block;
+      margin: 0 auto;
+      margin-top: -11px;
+      margin-left: 16px; }
+    .header a {
+      float: none;
+      display: inline-block;
+      margin-top: -15px; }
+    .header a:first-child {
+      display: block;
+      padding-top: 25px; } }
+@media screen and (max-width: 320px) {
+  .header {
+    height: 140px; }
+    .header .logo {
+      margin-bottom: 15px; }
+    .header h1 {
+      display: none; }
+    .header a p {
+      display: none; }
+
+  .header a .header-icon {
+    width: 40px;
+    height: 40px;
+    margin: 10px 5px 1px 5px; }
+    .header a .header-icon:hover {
+      width: 48px;
+      height: 48px;
+      margin: 8px 1px -5px 1px; } }
 .all-recipes {
   text-align: center;
   position: relative;
@@ -77,7 +119,7 @@ body {
 .sidebar {
   position: fixed;
   left: 0px;
-  top: 0px;
+  top: 100px;
   float: left;
   height: 100vh;
   width: 135px;
@@ -85,8 +127,10 @@ body {
   padding: 10px;
   padding-left: 20px;
   padding-top: 100px;
+  padding-right: 0px;
   text-align: left;
-  overflow: auto; }
+  overflow: auto;
+  background: #f2f2f2; }
   .sidebar a {
     text-decoration: none;
     display: block;
@@ -100,6 +144,44 @@ body {
     margin-top: 10px;
     color: #008fb3; }
 
+@media screen and (max-width: 440px) {
+  .all-recipes {
+    padding: 0; }
+
+  .sidebar {
+    position: fixed;
+    left: -150px;
+    top: 174px;
+    float: left;
+    height: auto;
+    width: 135px;
+    border: 1px solid #ffb366;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 10px;
+    text-align: left;
+    overflow: auto;
+    background: #f2f2f2;
+    transition: left 0.5s; }
+    .sidebar a {
+      text-decoration: none;
+      display: block;
+      margin-top: 10px;
+      font-size: 22px;
+      color: #008fb3;
+      font-weight: bold; }
+    .sidebar label {
+      display: block;
+      font-size: 20px;
+      margin-top: 10px;
+      color: #008fb3; }
+
+  .sidebar.open-sidebar {
+    left: 0px;
+    transition: left 0.5s; } }
+@media screen and (max-width: 320px) {
+  .sidebar {
+    top: 124px; } }
 .recipe-home {
   display: inline-block;
   background: #fff;
@@ -179,6 +261,19 @@ body {
 
 .signup-div {
   height: 230px; }
+
+.error {
+  height: auto;
+  width: 240px;
+  padding: 10px;
+  text-align: center;
+  border: 2px solid #ff4d4d;
+  border-radius: 10px;
+  background: #f99;
+  font-size: 16px;
+  font-family: helvetica;
+  margin: 0 auto;
+  margin-top: 10px; }
 
 .profile-page {
   width: 100%;
@@ -311,6 +406,32 @@ body {
   width: 25px;
   margin-right: 10px; }
 
+@media screen and (max-width: 570px) {
+  .recipe-page-photo-container {
+    width: 100vw;
+    height: 75vw; }
+    .recipe-page-photo-container img {
+      height: 75vw; }
+
+  .recipe-page-details {
+    display: block;
+    width: 100vw;
+    margin: 0 auto;
+    margin-bottom: 15px; }
+    .recipe-page-details h1 {
+      font-size: 20px; }
+
+  .ingredient-box {
+    float: none;
+    display: block;
+    width: 100vw;
+    margin: 0; }
+
+  .steps-box {
+    display: block;
+    width: 90vw;
+    padding-right: 30px;
+    margin-bottom: 10px; } }
 .new-recipe-page {
   padding: 10px; }
 
@@ -468,7 +589,6 @@ body {
   color: #f2f2f2;
   font-weight: bold;
   margin: 0 auto;
-  margin-top: 20px;
   border: 3px solid black;
   border-radius: 5px;
   padding: 10px;

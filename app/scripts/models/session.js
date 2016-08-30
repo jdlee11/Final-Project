@@ -46,7 +46,11 @@ const Session = Backbone.Model.extend({
         hashHistory.push("recipes");
       },
       error: function(){
-        console.log("could not log in");
+        if (newUrl){
+          hashHistory.push("signup/error");
+        } else {
+          hashHistory.push("login/error");
+        }
       }
     });
   }
