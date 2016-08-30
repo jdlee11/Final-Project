@@ -11,6 +11,7 @@ let LogOutPage = React.createClass({
       success: () => {
         session.clear();
         localStorage.removeItem('authtoken');
+        localStorage.removeItem('userId');
         session.save({username: 'anonymous', password: 'password'});
       }
     });

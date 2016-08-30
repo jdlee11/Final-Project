@@ -94,13 +94,11 @@ let NewRecipePage = React.createClass({
     });
     recipeCollection.create(newRecipe, {
       success: function(response){
-        console.log(response);
         hashHistory.push(`new/confirm`);
       }
     });
   },
   adjustTextBox: function(evt){
-    // console.log(evt.target);
     evt.target.style.height = "1px";
     evt.target.style.height = (evt.target.scrollHeight + 20) + "px";
   },
@@ -124,10 +122,10 @@ let NewRecipePage = React.createClass({
       return (<p className="new-keyword" key={i} onClick={self.removeKeyword}>{word}</p>);
     });
     let ingredientsList = this.state.ingredients.map(function(item, i){
-      return (<div className="form-ingredient" key={i} onClick={self.removeIngredient}>{item}</div>);
+      return (<li className="form-ingredient" key={i} onClick={self.removeIngredient}>{item}</li>);
     });
     let stepsList = this.state.steps.map(function(step, i){
-      return (<div className="form-steps" key={i} onClick={self.removeStep}>{step}</div>);
+      return (<li className="form-steps" key={i} onClick={self.removeStep}>{step}</li>);
     });
     return (
       <div className="whole-container">
@@ -147,30 +145,33 @@ let NewRecipePage = React.createClass({
             </div>
 
             <textarea placeholder="Description of your recipe" onKeyUp={this.adjustTextBox} ref="description"></textarea>
-
           </div>
 
           <div className="form-ingredient-list">
             <img className="timer" src="assets/timerIcon.png" />
             <input type="number" placeholder="Prep time" ref="preptime" required />
             <h3>Ingredients</h3>
-            {ingredientsList}
+            <ul>
+              {ingredientsList}
+            </ul>
+            <form onSubmit={this.addIngredientFunction}>
+              <input type="submit" value="+"/>
+              <input type="text" placeholder="Add Ingredient" ref="addIngredient"/>
+            </form>
           </div>
-          <form onSubmit={this.addIngredientFunction}>
-            <input type="submit" value="+"/>
-            <input type="text" placeholder="Add Ingredient" ref="addIngredient"/>
-          </form>
 
           <div className="form-step-list">
             <h3>Instructions</h3>
-            {stepsList}
+            <ul>
+              {stepsList}
+            </ul>
+            <form onSubmit={this.addStepFunction}>
+              <input type="submit" className="add-button" value="+"/>
+              <input type="text" placeholder="Add Step" ref="addStep"/>
+            </form>
           </div>
-          <form onSubmit={this.addStepFunction}>
-            <input type="submit" className="add-button" value="+"/>
-            <input type="text" placeholder="Add Step" ref="addStep"/>
-          </form>
 
-          <input type="button" onClick={this.createFunction} value="Create Recipe!"/>
+          <input className="create-button" type="button" onClick={this.createFunction} value="Create Recipe!"/>
         </div>
         {this.props.children}
       </div>

@@ -37,7 +37,7 @@ let RecipePage = React.createClass({
         return (<li key={i}>{step}</li>)
       });
       let editButton;
-      if (this.state.recipe.userid === session.get('userId')){
+      if (this.state.recipe.userid === session.get('userId') || localStorage.getItem('userId') === this.state.recipe.userid){
         editButton = (
           <img className="edit-button" src="assets/noun_141666_cc.png" onClick={this.editFunction}/>
         );

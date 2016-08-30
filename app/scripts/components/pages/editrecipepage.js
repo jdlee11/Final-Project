@@ -4,6 +4,7 @@ import session from '../../models/session';
 import recipeCollection from '../../collections/recipes';
 import { hashHistory } from 'react-router';
 import settings from '../../settings';
+import Dropzone from 'react-dropzone';
 
 let EditRecipePage = React.createClass({
   getInitialState: function(){
@@ -11,7 +12,7 @@ let EditRecipePage = React.createClass({
       keywords: [],
       ingredients: [],
       steps: [],
-      imageId: "",
+      image: null,
       recipe: null
     };
   },
@@ -82,58 +83,83 @@ let EditRecipePage = React.createClass({
     evt.preventDefault();
     hashHistory.push(`recipes/${this.props.params.id}`);
   },
+  adjustTextBox: function(evt){
+    evt.target.style.height = "1px";
+    evt.target.style.height = (evt.target.scrollHeight + 20) + "px";
+  },
   render: function(){
     let self = this;
+    let recipeImage;
+    if (this.state.recipe && this.state.recipe.image){
+      recipeImage = (
+        <div className="new-photo-container">
+          <img src={this.state.recipe.image} />
+        </div>
+      );
+    } else {
+      recipeImage = (
+        <Dropzone className="dropzone" ref="dropzone" onDrop={this.addImageFunction}>
+          <img src="assets/noun_585221_cc.png" />
+        </Dropzone>
+      );
+    }
     let keywordList = this.state.keywords.map(function(word, i){
-      return (<div className="form-keyword" key={i} onClick={self.removeKeyword}>{word}</div>);
+      return (<p className="new-keyword" key={i} onClick={self.removeKeyword}>{word}</p>);
     });
     let ingredientsList = this.state.ingredients.map(function(item, i){
-      return (<div className="form-ingredient" key={i} onClick={self.removeIngredient}>{item}</div>);
+      return (<li className="form-ingredient" key={i} onClick={self.removeIngredient}>{item}</li>);
     });
     let stepsList = this.state.steps.map(function(step, i){
-      return (<div className="form-steps" key={i} onClick={self.removeStep}>{step}</div>);
+      return (<li className="form-steps" key={i} onClick={self.removeStep}>{step}</li>);
     });
     let saveButton;
     let editRecipeContents;
     if (this.state.recipe){
-      if (this.state.recipe.userid === session.get('userId')){
+      if (this.state.recipe.userid === session.get('userId') || this.state.recipe.userid === localStorage.getItem('userId')){
         saveButton = (
-          <input type="button" className="save-button" onClick={this.saveFunction} value="Save Changes"/>
+          <input type="button" className="change-button" onClick={this.saveFunction} value="Save Changes"/>
         );
       }
       editRecipeContents = (
         <div className="new-recipe-page">
-          // image
-          <div className="edit-details">
+          {recipeImage}
+          <div className="new-details">
             <input type="text" placeholder="Recipe Name" ref="title" defaultValue={this.state.recipe.title} required/>
-            {keywordList}
+
             <form onSubmit={this.addKeywordFunction}>
               <input type="submit" value="+"/>
               <input type="text" placeholder="+ Add Keyword" ref="addKeyword"/>
             </form>
+            <div className="form-keywords">
+              {keywordList}
+            </div>
 
-            <textarea placeholder="Description of your recipe" ref="description" defaultValue={this.state.recipe.description}></textarea>
+            <textarea placeholder="Description of your recipe" onKeyUp={this.adjustTextBox} ref="description" defaultValue={this.state.recipe.description}></textarea>
+          </div>
 
+          <div className="form-ingredient-list">
             <img className="timer" src="assets/timerIcon.png" />
             <input type="number" placeholder="Prep time" ref="preptime" defaultValue={this.state.recipe.time.replace(' min', '').replace('s', '')} required />
-          </div>
-          <div className="form-ingredient-list">
             <h3>Ingredients</h3>
-            {ingredientsList}
+            <form onSubmit={this.addIngredientFunction}>
+              <input type="submit" value="+"/>
+              <input type="text" placeholder="+ Add Ingredient" ref="addIngredient"/>
+            </form>
+            <ul>
+              {ingredientsList}
+            </ul>
           </div>
-          <form onSubmit={this.addIngredientFunction}>
-            <input type="submit" value="+"/>
-            <input type="text" placeholder="+ Add Ingredient" ref="addIngredient"/>
-          </form>
 
           <div className="form-step-list">
             <h3>Instructions</h3>
-            {stepsList}
+            <form onSubmit={this.addStepFunction}>
+              <input type="submit" value="+"/>
+              <input type="text" placeholder="+ Add Step" ref="addStep"/>
+            </form>
+            <ul>
+              {stepsList}
+            </ul>
           </div>
-          <form onSubmit={this.addStepFunction}>
-            <input type="submit" value="+"/>
-            <input type="text" onSubmit={this.addStepFunction} placeholder="+ Add Step" ref="addStep"/>
-          </form>
         </div>
       );
     }
@@ -142,7 +168,7 @@ let EditRecipePage = React.createClass({
         <Header />
           {editRecipeContents}
           {saveButton}
-          <input type="button" className="cancel-button" onClick={this.cancelFunction} value="Cancel"/>
+            <input type="button" className="change-button" onClick={this.cancelFunction} value="Cancel"/>
           {this.props.children}
       </div>
     );

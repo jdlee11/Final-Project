@@ -53,9 +53,10 @@ let router = (
       <Route path="confirm" component={ConfirmModal}/>
     </Route>
     <Route path="logout" component={LogOutPage}/>
+    <Route path="*" component={Header}>
+      <IndexRedirect to="/recipes"/>
+    </Route>
   </Router>
 );
-// add routes for profile pages and recipe pages
-// step by step instructions can be a modal
 
 ReactDOM.render(router, document.getElementById('container'));

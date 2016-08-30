@@ -64,7 +64,7 @@
   }
 }
 
-form {
+.new-recipe-page form {
   input[type="submit"] {
     background: white;
     font-size: 20px;
@@ -92,7 +92,7 @@ form {
     }
   }
 }
-textarea {
+.new-recipe-page textarea {
   display: block;
   width: 40vw;
   min-width: 200px;
@@ -106,7 +106,40 @@ textarea {
     outline: none;
   }
 }
-
-
+.form-ingredient-list {
+  display: inline-block;
+  float: right;
+  width: 40%;
+  border: 1px solid $orange;
+  border-radius: 5px;
+  margin-right: -3%;
+  margin-bottom: 15px;
+  padding: 10px;
+  input[type="number"] {
+    height: 20px;
+    width: 90px;
+    font-size: 16px;
+    vertical-align: top;
+  }
+}
+.create-button, .change-button {
+  display: block;
+  margin: 0 auto;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  height: 50px;
+  width: 200px;
+  font-size: 24px;
+  background: $darker-blue;
+  color: $white;
+  border: none;
+  box-shadow: inset 0 0 5px #000;
+  transition: color 0.7s;
+  clear: both;
+  &:hover {
+    background: #00a3cc;
+    color: white;
+  }
+}
 // query at 620 width
   // move input from next to image to below
