@@ -31,9 +31,12 @@ body {
     // margin-top: -11px;
     // margin-left: 17px;
   }
+  .header-icon-container {
+    float: right;
+  }
   a {
     text-align: center;
-    float: right;
+    display: inline-block;
     text-decoration: none;
     color: white;
     font-family: helvetica;
@@ -77,14 +80,8 @@ body {
       margin-top: -11px;
       margin-left: 16px;
     }
-    a {
+    .header-icon-container {
       float: none;
-      display: inline-block;
-      margin-top: -15px;;
-    }
-    a:first-child {
-      display: block;
-      padding-top: 25px;
     }
   }
 }

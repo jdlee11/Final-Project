@@ -15,23 +15,24 @@ let Header = React.createClass({
             <img className="logo" src="assets/noun_118404_cc.png" />
             <h1>Cookit</h1>
           </Link>
-
-          <Link to="logout">
-            <img className="header-icon" src="assets/noun_344460_cc.png" />
-            <p>Log Out</p>
-          </Link>
-          <Link to={`profiles/${localStorage.getItem('userId')}/recipes`}>
-            <img className="header-icon" src="assets/noun_305942_cc.png" />
-            <p>Profile</p>
-          </Link>
-          <Link to="new">
-            <img className="header-icon" src="assets/noun_145052_cc.png" />
-            <p>Add Recipe</p>
-          </Link>
-          <Link to="recipes">
-            <img className="header-icon" src="assets/noun_441259_cc.png" />
-            <p>Home</p>
-          </Link>
+          <div className="header-icon-container">
+            <Link to="recipes">
+              <img className="header-icon" src="assets/noun_441259_cc.png" />
+              <p>Home</p>
+            </Link>
+            <Link to="new">
+              <img className="header-icon" src="assets/noun_145052_cc.png" />
+              <p>Add Recipe</p>
+            </Link>
+            <Link to={`profiles/${localStorage.getItem('userId')}/recipes`}>
+              <img className="header-icon" src="assets/noun_305942_cc.png" />
+              <p>Profile</p>
+            </Link>
+            <Link to="logout">
+              <img className="header-icon" src="assets/noun_344460_cc.png" />
+              <p>Log Out</p>
+            </Link>
+          </div>
         </div>
       );
     } else {
@@ -41,18 +42,20 @@ let Header = React.createClass({
             <img className="logo" src="assets/noun_118404_cc.png" />
             <h1>Cookit</h1>
           </Link>
-          <Link to="signup">
-            <img className="header-icon" src="assets/noun_6478_cc.png" />
-            <p>Sign Up</p>
-          </Link>
-          <Link to="login">
-            <img className="header-icon" src="assets/noun_344461_cc.png" />
-            <p>Log In</p>
-          </Link>
-          <Link to="recipes">
-            <img className="header-icon" src="assets/noun_441259_cc.png" />
-            <p>Home</p>
-          </Link>
+          <div className="header-icon-container">
+            <Link to="recipes">
+              <img className="header-icon" src="assets/noun_441259_cc.png" />
+              <p>Home</p>
+            </Link>
+            <Link to="login">
+              <img className="header-icon" src="assets/noun_344461_cc.png" />
+              <p>Log In</p>
+            </Link>
+            <Link to="signup">
+              <img className="header-icon" src="assets/noun_6478_cc.png" />
+              <p>Sign Up</p>
+            </Link>
+          </div>
         </div>
       );
     }

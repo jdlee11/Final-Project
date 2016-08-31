@@ -27,9 +27,11 @@ body {
     font-size: 40px;
     top: 50px;
     color: white; }
+  .header .header-icon-container {
+    float: right; }
   .header a {
     text-align: center;
-    float: right;
+    display: inline-block;
     text-decoration: none;
     color: white;
     font-family: helvetica;
@@ -64,13 +66,8 @@ body {
       margin: 0 auto;
       margin-top: -11px;
       margin-left: 16px; }
-    .header a {
-      float: none;
-      display: inline-block;
-      margin-top: -15px; }
-    .header a:first-child {
-      display: block;
-      padding-top: 25px; } }
+    .header .header-icon-container {
+      float: none; } }
 @media screen and (max-width: 320px) {
   .header {
     height: 140px; }
