@@ -54,6 +54,7 @@ let AllRecipesPage = React.createClass({
     }
     this.setState({page: 0});
     this.setState({canPageLeft: false});
+    this.setState({canPageRight: false});
     setTimeout(() => {
       this.getPageData();
     }, 100);

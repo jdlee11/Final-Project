@@ -181,6 +181,9 @@ body {
 @media screen and (max-width: 320px) {
   .sidebar {
     top: 124px; } }
+@media only screen and (min-device-width: 320px) {
+  @viewport {
+    width: 321px; } }
 .recipe-home {
   display: inline-block;
   background: #fff;
