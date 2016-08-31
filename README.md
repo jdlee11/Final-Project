@@ -3,6 +3,13 @@
 ### description
 This website will allow users to share recipes with others by uploading new recipes with instructions and ingredients listed, viewing existing recipes, and keeping a list of favorite recipes.
 
+### Live Site
+- jlee-cookit.surge.sh
+
+### Github Repo
+- https://github.com/jdlee11/Final-Project
+
+
 ### MVP
 - login/signup
   - the user will be able to log in with an existing account or create a new one. Authentication is only required for favoriting recipes and uploading new ones
@@ -76,6 +83,8 @@ This website will allow users to share recipes with others by uploading new reci
 - localStorage is complete. Once a user is logged in, refreshing the page will keep them logged in. Likewise, when the user logs out, they remain logged out. On to the rest of the styling. Then after that, I will add a state of "invalid" to the login/signup pages, which will be set to true if there is an error authenticating the user. This way, I can check this.state.invalid and show a text box saying something like "The username or password you entered is invalid". Likewise, I can do what I did with the profile page, and show "No recipes could be retrieved" if there was a fetch error (not that there should be any)
 
 - The last night to work on code, and almost everything is set. I finished styling, and added a viewport for phone screens. I suddenly have an issue with filtering the recipes using the sidebar. For some reason, I don't get a response, and so it displays no recipes. Have to fix ASAP
+
+- fixes are done, although I still noticed minor issues. Namely, on mobile, some input still looks different. The check icon is awkward, since the timing of size change and image change is off. Occasionally, assets don't load, and in some instances, state is being changed while unmounting (I caught this on the logout page). I added several more recipes to show off pagination and filtering. Also populated it with likes and bookmarks, but no "made"s. I have made it a live site as well.
 
 #### Giving credit where credit is due
 - Icons downloaded from thenounproject.com
