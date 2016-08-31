@@ -146,3 +146,11 @@
   height: 42px;
   margin-bottom: 8px;
 }
+
+@media screen and (max-width: 320px){
+  .complete-button {
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+    -webkit-text-align: center;
+  }
+}

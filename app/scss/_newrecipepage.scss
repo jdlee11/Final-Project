@@ -203,4 +203,9 @@
       width: 70vw;
     }
   }
+  .create-button, .change-button {
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+    -webkit-text-align: center;
+  }
 }

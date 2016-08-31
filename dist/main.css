@@ -89,6 +89,9 @@ body {
       width: 48px;
       height: 48px;
       margin: 8px 1px -5px 1px; } }
+@media only screen and (min-device-width: 320px) {
+  @viewport {
+    width: 321px; } }
 .all-recipes {
   text-align: center;
   position: relative;
@@ -188,9 +191,6 @@ body {
 @media screen and (max-width: 320px) {
   .sidebar {
     top: 124px; } }
-@media only screen and (min-device-width: 320px) {
-  @viewport {
-    width: 321px; } }
 .recipe-home {
   display: inline-block;
   background: #fff;
@@ -259,9 +259,9 @@ body {
     display: block;
     margin: 0 auto;
     margin-bottom: 8px; }
-  .login-div input[type=submit], .signup-div input[type=submit] {
+  .login-div input[type="submit"], .signup-div input[type="submit"] {
     width: 100px;
-    font-size: 30px; }
+    font-size: 20px; }
   .login-div a, .signup-div a {
     text-decoration: none;
     color: #008fb3;
@@ -284,6 +284,13 @@ body {
   margin: 0 auto;
   margin-top: 10px; }
 
+@media screen and (max-width: 570px) {
+  input[type="submit"] {
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+    -webkit-text-align: center;
+    background: white;
+    border-radius: 10px; } }
 .profile-page {
   width: 100%;
   text-align: center; }
@@ -443,7 +450,12 @@ body {
     width: 85vw;
     padding-right: 30px;
     margin: 0 auto;
-    margin-bottom: 10px; } }
+    margin-bottom: 10px; }
+
+  .cookit-button {
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+    -webkit-text-align: center; } }
 .new-recipe-page {
   padding: 10px; }
 
@@ -622,7 +634,12 @@ body {
     .form-step-list ol {
       margin-top: 0; }
     .form-step-list input[type="text"] {
-      width: 70vw; } }
+      width: 70vw; }
+
+  .create-button, .change-button {
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+    -webkit-text-align: center; } }
 .modal-wrap {
   background: rgba(0, 0, 0, 0.7);
   width: 100%;
@@ -761,5 +778,11 @@ body {
   width: 42px;
   height: 42px;
   margin-bottom: 8px; }
+
+@media screen and (max-width: 320px) {
+  .complete-button {
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+    -webkit-text-align: center; } }
 
 /*# sourceMappingURL=main.css.map */

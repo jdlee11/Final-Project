@@ -32,38 +32,40 @@ let CookitModal = React.createClass({
     });
 
     // check if this recipe is already liked by the user
-    likeCollection.fetch({
-      data: {
-        query: JSON.stringify({
-          userId: session.get('userId'),
-        })
-      }, success: (response, queryResponse) => {
-        let self = this;
-        if (queryResponse.length > 0){
-          this.setState({liked: queryResponse.filter(function(item){
-              return item.recipeId === self.state.recipe._id;
-            })
-          });
+    if (session.get('userId')){
+      likeCollection.fetch({
+        data: {
+          query: JSON.stringify({
+            userId: session.get('userId'),
+          })
+        }, success: (response, queryResponse) => {
+          let self = this;
+          if (queryResponse.length > 0){
+            this.setState({liked: queryResponse.filter(function(item){
+                return item.recipeId === self.state.recipe._id;
+              })
+            });
+          }
         }
-      }
-    });
+      });
 
-    // check if this recipe is bookmarked by the user
-    bookmarkCollection.fetch({
-      data: {
-        query: JSON.stringify({
-          userId: session.get('userId'),
-        })
-      }, success: (response, queryResponse) => {
-        let self = this;
-        if (queryResponse.length > 0){
-          this.setState({bookmarked: queryResponse.filter(function(item){
-              return item.recipeId === self.state.recipe._id;
-            })
-          });
+      // check if this recipe is bookmarked by the user
+      bookmarkCollection.fetch({
+        data: {
+          query: JSON.stringify({
+            userId: session.get('userId'),
+          })
+        }, success: (response, queryResponse) => {
+          let self = this;
+          if (queryResponse.length > 0){
+            this.setState({bookmarked: queryResponse.filter(function(item){
+                return item.recipeId === self.state.recipe._id;
+              })
+            });
+          }
         }
-      }
-    });
+      });
+    }
   },
 
   nextStep: function(){
@@ -204,7 +206,7 @@ let CookitModal = React.createClass({
         } else {
           bookmarkTagSrc = "assets/noun_100771_cc_off.png";
         }
-        if (session.get('userId') !== '57ba04bbdd2e952342b96364'){
+        if (localStorage.getItem('userId') !== 'undefined'){
           likeTag = (<img className="like-tag-modal"
             src={likeTagSrc}
             onClick={this.toggleLike}/>);
