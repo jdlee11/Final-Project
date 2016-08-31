@@ -25,7 +25,6 @@ let NewRecipePage = React.createClass({
   },
   addImageFunction: function(files){
     if (files[0].type.substr(0, 5) === "image"){
-      console.log(files[0]);
       let file = files[0];
       let fileReader = new FileReader();
       let fileUrl = fileReader.readAsDataURL(file);

@@ -157,6 +157,9 @@ let AllRecipesPage = React.createClass({
           return (<RecipeHome recipe={item} key={i} />);
         }
       });
+      if (this.state.recipes.length === 0){
+        recipeList = <h1>No matching recipes found</h1>
+      }
       let leftArrow;
       if (this.state.canPageLeft){
         leftArrow = (

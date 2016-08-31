@@ -122,6 +122,9 @@
 .form-step-list {
   display: inline-block;
   width: 50%;
+  input[type="text"] {
+    width: 42vw;
+  }
 }
 .form-ingredient, .form-step {
   font-family: helvetica;
@@ -195,6 +198,9 @@
     margin-bottom: 10px;
     ol {
       margin-top: 0;
+    }
+    input[type="text"] {
+      width: 70vw;
     }
   }
 }
