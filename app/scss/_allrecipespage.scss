@@ -28,18 +28,17 @@
 .sidebar {
   position: fixed;
   left: 0px;
-  top: 100px;
+  top: 0px;
   float: left;
   height: 100vh;
   width: 135px;
   border-right: 1px solid $orange;
   padding: 10px;
   padding-left: 20px;
-  padding-top: 0px;
+  padding-top: 100px;
   padding-right: 0px;
   text-align: left;
   overflow: auto;
-  background: $white;
   a {
     text-decoration: none;
     display: block;

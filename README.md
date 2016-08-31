@@ -75,6 +75,8 @@ This website will allow users to share recipes with others by uploading new reci
 
 - localStorage is complete. Once a user is logged in, refreshing the page will keep them logged in. Likewise, when the user logs out, they remain logged out. On to the rest of the styling. Then after that, I will add a state of "invalid" to the login/signup pages, which will be set to true if there is an error authenticating the user. This way, I can check this.state.invalid and show a text box saying something like "The username or password you entered is invalid". Likewise, I can do what I did with the profile page, and show "No recipes could be retrieved" if there was a fetch error (not that there should be any)
 
+- The last night to work on code, and almost everything is set. I finished styling, and added a viewport for phone screens. I suddenly have an issue with filtering the recipes using the sidebar. For some reason, I don't get a response, and so it displays no recipes. Have to fix ASAP
+
 #### Giving credit where credit is due
 - Icons downloaded from thenounproject.com
   - pot by Francielly Costantin Senra

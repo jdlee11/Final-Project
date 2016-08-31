@@ -44,23 +44,23 @@ let AllRecipesPage = React.createClass({
     }
   },
   toggleSearch: function(evt){
-    let index = this.state.searchTerms.indexOf(evt.target.value);
+    let term = evt.target.innerText.replace(" ", "");
+    let index = this.state.searchTerms.indexOf(term);
     if (index !== -1){
       let newSearchTerms = this.state.searchTerms;
       newSearchTerms.splice(index, 1);
       this.setState({searchTerms: newSearchTerms});
-    } else {
-      this.setState({searchTerms: this.state.searchTerms.concat(evt.target.value)});
+    } else if (term !== ""){
+      this.setState({searchTerms: this.state.searchTerms.concat(term)});
     }
     this.setState({page: 0});
     this.setState({canPageLeft: false});
     this.setState({canPageRight: false});
     setTimeout(() => {
       this.getPageData();
-    }, 100);
+    }, 50);
   },
   fetchData: function(){
-    this.setState({searchTerm: []});
     $('input').prop('checked', false);
     recipeCollection.fetch({
       // limits to 10 per page
@@ -69,6 +69,7 @@ let AllRecipesPage = React.createClass({
       url: `${recipeCollection.url}?query={}&limit=${this.state.maxItems + 1}&skip=${this.state.page * this.state.maxItems}`,
       success: (response, queryResponse) => {
         this.setState({recipes: queryResponse, retrievedPage: true});
+        this.setState({retrievedPage: true});
         if (queryResponse.length > this.state.maxItems){
           this.setState({canPageRight: true});
         } else {
@@ -81,7 +82,7 @@ let AllRecipesPage = React.createClass({
     this.setState({page: this.state.page + 1, canPageLeft: true, retrievedPage: false});
     setTimeout(() => {
       this.getPageData();
-    }, 100)
+    }, 50);
   },
   previousPage: function(){
     this.setState({page: this.state.page - 1, retrievedPage: false});
@@ -90,9 +91,10 @@ let AllRecipesPage = React.createClass({
         this.setState({canPageLeft: false});
       }
       this.getPageData();
-    }, 100)
+    }, 50);
   },
   getPageData: function(){
+    this.setState({retrievedPage: false});
     if (this.state.searchTerms.length === 0){
       this.fetchData();
     } else {
@@ -108,6 +110,7 @@ let AllRecipesPage = React.createClass({
         },
         success: (response, queryResponse) => {
           this.setState({recipes: queryResponse});
+          this.setState({retrievedPage: true});
           if (queryResponse.length > this.state.maxItems){
             this.setState({canPageRight: true});
           } else {
