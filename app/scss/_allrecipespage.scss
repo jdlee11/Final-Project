@@ -63,7 +63,7 @@
   }
   .sidebar {
     position: fixed;
-    left: -150px;
+    left: -160px;
     top: 174px;
     float: left;
     height: auto;
@@ -71,11 +71,12 @@
     border: 1px solid $orange;
     padding: 10px;
     padding-left: 20px;
-    padding-right: 10px;
+    padding-right: 35px;
     text-align: left;
     overflow: auto;
     background: $white;
     transition: left 0.5s;
+    box-shadow: inset -30px 0px 5px #dcdcdc;
     a {
       text-decoration: none;
       display: block;
