@@ -111,6 +111,13 @@ body {
     color: #008fb3;
     font-family: helvetica; }
 
+.recipes-list-container {
+  margin: 0 auto;
+  width: auto;
+  text-align: center; }
+  .recipes-list-container h1 {
+    text-align: center; }
+
 .recipe-page-arrow {
   height: 50px;
   width: 30px; }

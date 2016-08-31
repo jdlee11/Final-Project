@@ -14,7 +14,7 @@ let AllRecipesPage = React.createClass({
       canPageLeft: false,
       canPageRight: false,
       maxPage: 0,
-      maxItems: 2,
+      maxItems: 6,
       retrievedPage: false, // found it necessary to wait for all the page's recipes to be fetched
       searchTerms: [],
       searchOpen: false,
@@ -36,7 +36,7 @@ let AllRecipesPage = React.createClass({
               this.setState({maxPage: Math.ceil(count.count/2) - 1}); // change back to 10
               this.fetchData();
             }
-          })
+          });
         }
       });
     } else {
@@ -63,8 +63,6 @@ let AllRecipesPage = React.createClass({
   fetchData: function(){
     $('input').prop('checked', false);
     recipeCollection.fetch({
-      // limits to 10 per page
-      // change back to 10 after testing
 
       url: `${recipeCollection.url}?query={}&limit=${this.state.maxItems + 1}&skip=${this.state.page * this.state.maxItems}`,
       success: (response, queryResponse) => {
@@ -196,7 +194,9 @@ let AllRecipesPage = React.createClass({
         <Header />
         <div className="all-recipes">
           {sideBar}
-          {recipeList}
+          <div className="recipes-list-container">
+              {recipeList}
+          </div>
           {nav}
         </div>
       </div>
