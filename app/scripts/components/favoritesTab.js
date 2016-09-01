@@ -15,7 +15,9 @@ let FavoritesTab = React.createClass({
         bookmarkCollection.fetch({
           data: {
             query: JSON.stringify({
-              userId: this.props.params.id
+              _acl: {
+                creator: this.props.params.id
+              }
             })
           }, success: (response, queryResponse) => {
             this.setState({bookmarks: queryResponse});
