@@ -30,6 +30,7 @@ let AllRecipesPage = React.createClass({
           this.setState({loggedIn: true});
           localStorage.setItem('authtoken', response.toJSON().authtoken);
           localStorage.setItem('userId', response.toJSON()._id);
+          localStorage.setItem('username', response.toJSON().username);
           recipeCollection.fetch({
             url: `${recipeCollection.url}/_count`,
             success: (response, count) => {
