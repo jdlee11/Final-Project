@@ -25,6 +25,7 @@ const Session = Backbone.Model.extend({
         this.unset('password');
         localStorage.setItem('authtoken', response._kmd.authtoken);
         localStorage.setItem('userId', response._id);
+        localStorage.setItem('username', response.username);
         // when signing up, create new user model
         if (newUrl) {
           store.users.create(username, {

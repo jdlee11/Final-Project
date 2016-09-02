@@ -79,8 +79,8 @@ let NewRecipePage = React.createClass({
       newImageSrc = this.state.image[0];
     }
     let newRecipe = new Recipe({
-      username: session.get('username'),
-      userid: session.get('userId'),
+      username: localStorage.getItem('username'),
+      userid: localStorage.getItem('userId'),
       title: this.refs.title.value,
       keywords: this.state.keywords,
       description: this.refs.description.value,
