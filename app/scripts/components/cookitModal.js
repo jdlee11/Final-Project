@@ -36,7 +36,7 @@ let CookitModal = React.createClass({
       likeCollection.fetch({
         data: {
           query: JSON.stringify({
-            userId: session.get('userId'),
+            userId: localStorage.getItem('userId'),
           })
         }, success: (response, queryResponse) => {
           let self = this;
@@ -53,7 +53,7 @@ let CookitModal = React.createClass({
       bookmarkCollection.fetch({
         data: {
           query: JSON.stringify({
-            userId: session.get('userId'),
+            userId: localStorage.getItem('userId'),
           })
         }, success: (response, queryResponse) => {
           let self = this;
@@ -98,7 +98,7 @@ let CookitModal = React.createClass({
     // check if all steps are completed
     if (!this.state.stepsCompleted.includes(false)){
       madeCollection.create({
-        userId: session.get('userId'),
+        userId: localStorage.getItem('userId'),
         recipeId: this.state.recipe._id
       }, {
         success: (response) => {
@@ -122,7 +122,7 @@ let CookitModal = React.createClass({
       });
     } else {
       likeCollection.create({
-        userId: session.get('userId'),
+        userId: localStorage.getItem('userId'),
         recipeId: this.props.params.id
       }, {
         success: (response) => {
@@ -141,7 +141,7 @@ let CookitModal = React.createClass({
       });
     } else {
       bookmarkCollection.create({
-        userId: session.get('userId'),
+        userId: localStorage.getItem('userId'),
         recipeId: this.props.params.id
       }, {
         success: (response) => {
